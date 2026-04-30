@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Angstkurs — Infografik · moni.goes.wild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        oklch(98% 0.012 80);
+    --cream:        oklch(96% 0.018 78);
+    --sand:         oklch(92% 0.022 78);
+    --linen:        oklch(88% 0.024 75);
+    --stone:        oklch(72% 0.018 70);
+    --bark:         oklch(45% 0.020 60);
+    --ink:          oklch(24% 0.018 50);
+    --ink-soft:     oklch(34% 0.018 55);
+
+    --terra-50:     oklch(96% 0.020 45);
+    --terra-100:    oklch(90% 0.045 45);
+    --terra-200:    oklch(82% 0.080 42);
+    --terra:        oklch(60% 0.140 38);
+    --terra-700:    oklch(48% 0.130 35);
+    --terra-900:    oklch(32% 0.085 32);
+
+    --sage-50:      oklch(96% 0.018 145);
+    --sage-100:     oklch(90% 0.030 145);
+    --sage:         oklch(72% 0.045 145);
+    --sage-700:     oklch(48% 0.045 145);
+
+    --line:         oklch(82% 0.020 75);
+    --line-soft:    oklch(90% 0.018 75);
+
+    --font-display: 'Libre Caslon Text', Georgia, serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+    --font-script:  'Homemade Apple', cursive;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* A4 portrait page · single sheet */
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    padding: 18mm 16mm;
+    background: var(--paper);
+    box-shadow: 0 8px 32px rgba(60, 40, 20, .12);
+    position: relative;
+  }
+  @media print {
+    body { background: var(--paper); }
+    .sheet { box-shadow: none; margin: 0; }
+    @page { size: A4; margin: 0; }
+  }
+
+  /* Brand mark in corner */
+  .brand-mark {
+    position: absolute; top: 18mm; right: 16mm;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; color: var(--bark);
+    letter-spacing: .06em;
+  }
+  .brand-mark .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--terra-200), var(--terra) 70%);
+  }
+
+  /* ── Header ── */
+  .head { text-align: left; margin-bottom: 14mm; }
+  .head .eyebrow {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--terra-700); font-weight: 600; margin-bottom: 6mm;
+  }
+  .head h1 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 44px; line-height: 1.05; letter-spacing: -.015em;
+    color: var(--ink); margin: 0 0 4mm; max-width: 24ch;
+  }
+  .head h1 em { font-style: italic; color: var(--terra); }
+  .head .lede {
+    font-size: 14px; color: var(--bark); max-width: 60ch; margin: 0;
+  }
+
+  /* ── Layer block ── */
+  .layer {
+    margin-bottom: 12mm;
+    padding-top: 6mm;
+    border-top: .5px solid var(--line-soft);
+    page-break-inside: avoid;
+  }
+  .layer-head {
+    display: grid; grid-template-columns: 36mm 1fr;
+    gap: 6mm; align-items: baseline; margin-bottom: 6mm;
+  }
+  .layer-num {
+    font-family: var(--font-display); font-style: italic;
+    color: var(--terra); font-size: 14px; letter-spacing: .04em;
+  }
+  .layer h2 {
+    margin: 0; font-family: var(--font-display);
+    font-size: 24px; font-weight: 400; line-height: 1.15;
+    letter-spacing: -.01em; color: var(--ink);
+  }
+  .layer h2 em { font-style: italic; color: var(--terra); }
+  .layer-intro {
+    grid-column: 2; font-size: 12.5px; color: var(--bark);
+    margin: 2mm 0 0; max-width: 56ch;
+  }
+
+  /* ── 3-up grid for concepts ── */
+  .triad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5mm;
+  }
+  .concept {
+    background: var(--cream);
+    border: .5px solid var(--line-soft);
+    border-radius: 8px;
+    padding: 5mm;
+    display: grid; gap: 3mm;
+    page-break-inside: avoid;
+  }
+  .concept .img {
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 10px, rgba(0,0,0,.04) 10px 11px),
+      linear-gradient(180deg, var(--linen), var(--sand));
+    border: 1px dashed var(--bark);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--bark); position: relative;
+  }
+  .concept .img::before, .concept .img::after {
+    content: ""; position: absolute; width: 12px; height: 12px;
+    border: 1.5px solid var(--bark); opacity: .5;
+  }
+  .concept .img::before { top: 5px; left: 5px; border-right: 0; border-bottom: 0; }
+  .concept .img::after  { bottom: 5px; right: 5px; border-left: 0; border-top: 0; }
+  .concept .img .lbl {
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 600; color: var(--bark);
+    background: color-mix(in oklch, var(--paper) 80%, transparent);
+    padding: 3px 8px; border-radius: 3px;
+  }
+  .concept .img .dim {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 9px; color: var(--bark); opacity: .65;
+    margin-top: 2px;
+  }
+  .concept .who {
+    font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--terra-700); font-weight: 600;
+  }
+  .concept h3 {
+    margin: 0; font-family: var(--font-display);
+    font-size: 18px; font-weight: 400; line-height: 1.2;
+    letter-spacing: -.005em;
+  }
+  .concept h3 em { font-style: italic; color: var(--terra); }
+  .concept p {
+    margin: 0; font-size: 12px; line-height: 1.5; color: var(--ink-soft);
+  }
+  .concept .quote {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 13px; line-height: 1.4; color: var(--bark);
+    border-left: 2px solid var(--terra); padding-left: 8px;
+    margin-top: 1mm;
+  }
+
+  /* ── Welle layer (different style — sage tinted) ── */
+  .layer.welle .concept { background: var(--sage-50); border-color: var(--sage-100); }
+  .layer.welle .concept.surf { background: linear-gradient(135deg, var(--terra-50), var(--cream)); border-color: var(--terra-100); }
+  .layer.welle .concept.surf .who { color: var(--terra); }
+  .layer.welle .concept.surf h3 em { color: var(--terra-700); }
+
+  /* ── Closer ── */
+  .closer {
+    margin-top: 8mm; padding: 6mm 5mm;
+    background: linear-gradient(135deg, var(--terra-50), var(--cream));
+    border-radius: 10px;
+    display: grid; grid-template-columns: 1fr 30mm; gap: 5mm;
+    align-items: center;
+    page-break-inside: avoid;
+  }
+  .closer blockquote {
+    margin: 0; font-family: var(--font-display);
+    font-style: italic; font-weight: 400;
+    font-size: 22px; line-height: 1.25; color: var(--bark);
+    text-wrap: balance;
+  }
+  .closer cite {
+    display: block; margin-top: 3mm;
+    font-family: var(--font-body); font-style: normal;
+    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--terra-700); font-weight: 600;
+  }
+  .closer .fox {
+    aspect-ratio: 1 / 1.1; border-radius: 8px;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 8px, rgba(0,0,0,.04) 8px 9px),
+      linear-gradient(180deg, var(--terra-100), var(--terra-200));
+    border: 1px dashed var(--terra-700);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--terra-900); padding: 4mm; text-align: center;
+  }
+  .closer .fox .lbl {
+    font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .closer .fox .dim {
+    font-family: ui-monospace, monospace;
+    font-size: 8px; opacity: .7; margin-top: 1mm;
+  }
+
+  /* ── Footer line ── */
+  .foot {
+    margin-top: 8mm; padding-top: 4mm;
+    border-top: .5px solid var(--line-soft);
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 10px; color: var(--bark);
+    letter-spacing: .04em;
+  }
+  .foot .url {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 13px; color: var(--terra-700); letter-spacing: 0;
+  }
+
+  /* tiny svg utility for icon rings */
+  .ring {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--terra-50);
+    border: .5px solid var(--terra-100);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 12px; color: var(--terra-700); font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="brand-mark">
+    <span class="dot"></span>
+    <span>moni.goes.wild · Angstkurs</span>
+  </div>
+
+  <header class="head">
+    <div class="eyebrow">Mutig mit Angst</div>
+    <h1>Du musst keine Angst besiegen.<br/><em>Du musst Sicherheit in dir finden.</em></h1>
+    <p class="lede">Eine Übersicht der drei Schichten, durch die der Kurs dich führt — die Haltung, der Umgang, die Werkzeuge.</p>
+  </header>
+
+  <!-- ── Layer 1: Innere Haltung ── -->
+  <section class="layer">
+    <div class="layer-head">
+      <div class="layer-num">i. — Innere Haltung</div>
+      <div>
+        <h2>Wo alles beginnt: <em>in dir.</em></h2>
+        <p class="layer-intro">Drei Wahrheiten, die in den ersten Modulen alles auf den Kopf stellen — und dich aufhören lassen, im Außen nach Sicherheit zu suchen.</p>
+      </div>
+    </div>
+
+    <div class="triad">
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Mila · Aquarell</div>
+          <div class="dim">leise Hündin · 4:3</div>
+        </div>
+        <div class="who">Mila</div>
+        <h3>„Ich bin." <em>Punkt.</em></h3>
+        <p>Alles, was nach „ich bin" kommt, ist hinzugefügt. Die Angst klebt an dir wie ein USB-Stick mit Virus — sie ist nicht du.</p>
+        <div class="quote">Schleimi-Knubbel rausziehen.</div>
+      </article>
+
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Tari · Aquarell</div>
+          <div class="dim">Henne · 4:3</div>
+        </div>
+        <div class="who">Tari · Queen Energy</div>
+        <h3>Setz dich <em>auf den Thron.</em></h3>
+        <p>Niemand kommt und sagt dir, du darfst jetzt. Du entscheidest. Selbstermächtigung ist eine Wahl, kein Verdienst.</p>
+        <div class="quote">Hör auf, dich runterzuschubsen.</div>
+      </article>
+
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Kerone · Aquarell</div>
+          <div class="dim">Mr. Weisheit · 4:3</div>
+        </div>
+        <div class="who">Kerone</div>
+        <h3>Sicherheit <em>in dir.</em></h3>
+        <p>Sicherheit im Außen ist eine Illusion. Die einzige stabile Sicherheit ist die, die du in dir selbst trägst — durchs Bauchgefühl.</p>
+        <div class="quote">Hält's mich lebendig?</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Layer 2: Wellen ── -->
+  <section class="layer welle">
+    <div class="layer-head">
+      <div class="layer-num">ii. — Mit den Wellen umgehen</div>
+      <div>
+        <h2>Drei Wege, mit dem Leben zu reagieren — <em>einer trägt.</em></h2>
+        <p class="layer-intro">Du bist nicht die Welle. Du bist das Meer. Wir Frauen sind zyklisch — das ist Kraft, nicht Schwäche.</p>
+      </div>
+    </div>
+
+    <div class="triad">
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Welle stürzt um</div>
+          <div class="dim">Sinnbild · 4:3</div>
+        </div>
+        <div class="who">Opferhaltung</div>
+        <h3>Weggespült.</h3>
+        <p>„Da kann ich nichts für." Du wirst von der Angst mitgerissen, gibst die Verantwortung ab — und stehst danach klein da.</p>
+      </article>
+
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Dagegen rudern</div>
+          <div class="dim">Sinnbild · 4:3</div>
+        </div>
+        <div class="who">Erschöpfung</div>
+        <h3>Dagegenhalten.</h3>
+        <p>„Ich kämpfe das weg." Bungee-Jumping gegen die Angst, Vollgas-Mode. Funktioniert kurz, kostet alles, hält nicht.</p>
+      </article>
+
+      <article class="concept surf">
+        <div class="img">
+          <div class="lbl">Schlauchboot auf Welle</div>
+          <div class="dim">Sinnbild · 4:3</div>
+        </div>
+        <div class="who">Bauchgefühl</div>
+        <h3>Die Welle <em>surfen.</em></h3>
+        <p>Mit dem Schlauchboot obendrauf, Pizza in der Hand. Du gehst mit, bleibst dabei bei dir, entscheidest aus der Intuition heraus.</p>
+        <div class="quote">Manchmal ist „nein" das Mutigste.</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Layer 3: Werkzeuge ── -->
+  <section class="layer">
+    <div class="layer-head">
+      <div class="layer-num">iii. — Werkzeuge für den Alltag</div>
+      <div>
+        <h2>Konkret. <em>Heute schon nutzbar.</em></h2>
+        <p class="layer-intro">Drei Praxis-Tools, die du am Tag des Kurses anwenden kannst — keine Theorie, kein Warten.</p>
+      </div>
+    </div>
+
+    <div class="triad">
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Wunderkerzen-Video</div>
+          <div class="dim">Tool · 4:3</div>
+        </div>
+        <div class="who">Kerone · Video 12</div>
+        <h3>Dein <em>Wunderkerzen-Video.</em></h3>
+        <p>3 Min, dein Lied, deine Bilder. Knackig geschnitten, kein Bergsee. So unfassbar gut, dass es dich auch am Boden noch hochhebt.</p>
+      </article>
+
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Wecker · Post-its</div>
+          <div class="dim">Tool · 4:3</div>
+        </div>
+        <div class="who">Kerone · Video 13</div>
+        <h3>Anker im Alltag.</h3>
+        <p>Wecker alle 15 Min. Post-its an der Tür. Striche auf dem Küchentisch. Bewusstheit braucht Trigger — sie kommt nicht von selbst.</p>
+        <div class="quote">Don't feed the fears.</div>
+      </article>
+
+      <article class="concept">
+        <div class="img">
+          <div class="lbl">Embryo · Ei</div>
+          <div class="dim">Sinnbild · 4:3</div>
+        </div>
+        <div class="who">Hermine · Video 14</div>
+        <h3>Du bist <em>im Wachsen.</em></h3>
+        <p>Was in dir passiert, sieht von außen niemand. Verlass dich nicht auf andere, deinen Fortschritt zu sehen — es passiert längst.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Closer ── -->
+  <div class="closer">
+    <div>
+      <blockquote>Es geht nicht ums Ankommen.<br/>Es geht darum, wer du wirst auf dem Weg.</blockquote>
+      <cite>— Ravi · Video 15</cite>
+    </div>
+    <div class="fox">
+      <div class="lbl">Fuchs</div>
+      <div class="dim">Markenzeichen</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Aus Liebe zu Tieren — und zu dir.</span>
+    <span class="url">monigoeswild.de</span>
+  </div>
+
+</div>
+
+</body>
+</html>
