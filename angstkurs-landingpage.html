@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Angstkurs — moni.goes.wild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600;700&family=Reenie+Beanie&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        oklch(98% 0.012 80);
+    --cream:        oklch(96% 0.018 78);
+    --sand:         oklch(92% 0.022 78);
+    --linen:        oklch(88% 0.024 75);
+    --stone:        oklch(72% 0.018 70);
+    --bark:         oklch(45% 0.020 60);
+    --ink:          oklch(24% 0.018 50);
+    --ink-soft:     oklch(34% 0.018 55);
+
+    --terra-50:     oklch(96% 0.020 45);
+    --terra-100:    oklch(90% 0.045 45);
+    --terra-200:    oklch(82% 0.080 42);
+    --terra-400:    oklch(68% 0.120 40);
+    --terra:        oklch(60% 0.140 38);
+    --terra-700:    oklch(48% 0.130 35);
+    --terra-900:    oklch(32% 0.085 32);
+
+    --sage-50:      oklch(96% 0.018 145);
+    --sage-100:     oklch(90% 0.030 145);
+    --sage:         oklch(72% 0.045 145);
+    --sage-700:     oklch(48% 0.045 145);
+
+    --honey:        oklch(78% 0.110 75);
+    --rust:         oklch(50% 0.140 35);
+    --moss:         oklch(40% 0.060 140);
+
+    --bg:           var(--paper);
+    --surface:      var(--cream);
+    --line:         oklch(82% 0.020 75);
+    --line-soft:    oklch(90% 0.018 75);
+    --text:         var(--ink);
+    --text-soft:    var(--ink-soft);
+    --text-mute:    var(--stone);
+    --primary:      var(--terra);
+
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-script:  'Caveat', 'Brush Script MT', cursive;
+    --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+
+    --t-xxs: 12px; --t-xs: 13px; --t-sm: 14px; --t-base: 16px;
+    --t-md: 18px; --t-lg: 22px; --t-xl: 28px;
+    --t-2xl: 36px; --t-3xl: 48px; --t-4xl: 68px; --t-5xl: 96px;
+
+    --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px;
+    --s-6: 24px; --s-8: 32px; --s-10: 40px; --s-12: 48px;
+    --s-16: 64px; --s-20: 80px; --s-24: 96px;
+
+    --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px; --r-pill: 999px;
+
+    --sh-1: 0 1px 2px rgba(60, 40, 20, .06), 0 1px 1px rgba(60, 40, 20, .04);
+    --sh-2: 0 6px 18px rgba(60, 40, 20, .08), 0 1px 2px rgba(60, 40, 20, .06);
+    --sh-3: 0 18px 40px rgba(60, 40, 20, .10), 0 2px 6px rgba(60, 40, 20, .06);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: var(--t-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--terra-100); color: var(--terra-900); }
+
+  .shell { max-width: 1180px; margin: 0 auto; padding: 0 var(--s-8); }
+
+  /* ── Topbar ────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in oklch, var(--paper) 88%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: .5px solid var(--line-soft);
+  }
+  .topbar-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px var(--s-8);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand .mark {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--terra-200), var(--terra) 70%);
+    box-shadow: inset 0 -3px 6px rgba(0,0,0,.08);
+  }
+  .brand .name {
+    font-family: var(--font-script);
+    font-size: 24px; line-height: 1; color: var(--ink);
+  }
+  .brand .name em { font-style: normal; color: var(--terra); }
+  .topbar-meta { font-size: var(--t-xs); color: var(--text-mute); }
+  .topbar-meta b { color: var(--ink); font-weight: 600; }
+
+  /* ── Buttons ───────────────────────── */
+  .btn {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: var(--font-body); font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 26px; border-radius: var(--r-pill);
+    font-size: 15px; line-height: 1;
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+    text-decoration: none;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--terra); color: #fff; box-shadow: var(--sh-1); }
+  .btn-primary:hover { background: var(--terra-700); box-shadow: var(--sh-2); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { background: var(--surface); }
+  .btn-handwrite {
+    font-family: var(--font-script); font-size: 24px; font-weight: 600;
+    background: var(--terra); color: #fff; padding: 16px 30px 14px;
+    box-shadow: var(--sh-2);
+  }
+  .btn-handwrite:hover { background: var(--terra-700); box-shadow: var(--sh-3); }
+  .btn-lg { padding: 16px 28px; font-size: 16px; }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+
+  /* ── Hero ──────────────────────────── */
+  .hero {
+    padding: var(--s-24) 0 var(--s-16);
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: var(--s-12);
+    align-items: end;
+  }
+  .hero .eyebrow {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--terra-700); font-weight: 600; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(44px, 7.5vw, 84px);
+    line-height: 1.0; letter-spacing: -0.025em;
+    margin: 0 0 var(--s-6);
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--terra);
+  }
+  .hero .lede {
+    font-size: var(--t-md); color: var(--text-soft); max-width: 52ch;
+    text-wrap: pretty; margin: 0 0 var(--s-8);
+  }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .hero-cta .meta { font-size: var(--t-xs); color: var(--text-mute); }
+  .hero-card {
+    background: var(--surface);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-xl);
+    padding: var(--s-8);
+    display: grid; gap: 14px;
+    box-shadow: var(--sh-1);
+  }
+  .hero-card .stamp-h {
+    font-family: var(--font-script);
+    font-size: 32px; line-height: 1; color: var(--terra);
+    font-weight: 500;
+  }
+  .hero-card p { margin: 0; color: var(--text-soft); font-size: var(--t-sm); line-height: 1.55; }
+  /* ── Image placeholders ────────────── */
+  .ph {
+    position: relative;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 14px, rgba(0,0,0,.045) 14px 15px),
+      linear-gradient(180deg, var(--linen), var(--sand));
+    border: 1px dashed var(--bark);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--bark);
+    text-align: center;
+    padding: 16px;
+  }
+  .ph::before, .ph::after {
+    content: ""; position: absolute; width: 18px; height: 18px;
+    border: 1.5px solid var(--bark); opacity: .55;
+  }
+  .ph::before { top: 8px; left: 8px;  border-right: 0; border-bottom: 0; }
+  .ph::after  { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+  .ph svg {
+    width: 32px; height: 32px; margin-bottom: 8px;
+    opacity: .7;
+  }
+  .ph .lbl {
+    font-family: var(--font-body); font-size: 11px;
+    font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--bark);
+    background: color-mix(in oklch, var(--paper) 80%, transparent);
+    padding: 4px 10px; border-radius: var(--r-xs);
+    margin-bottom: 4px;
+  }
+  .ph .dim {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 10px; color: var(--bark); opacity: .6;
+  }
+
+  .hero-card .pic {
+    aspect-ratio: 4 / 5;
+  }
+
+  .hero-quote {
+    grid-column: 1 / -1;
+    margin-top: var(--s-8); padding-top: var(--s-8);
+    border-top: .5px solid var(--line-soft);
+    font-family: var(--font-display);
+    font-style: italic; font-size: var(--t-lg);
+    color: var(--bark); max-width: 70ch;
+  }
+  .hero-quote span {
+    display: block; margin-top: 10px;
+    font-family: var(--font-body); font-style: normal;
+    font-size: var(--t-xs); color: var(--text-mute);
+    letter-spacing: .12em; text-transform: uppercase;
+  }
+
+  /* ── Section frame ─────────────────── */
+  .sec { padding: var(--s-20) 0; border-top: .5px solid var(--line-soft); }
+  .sec-head { display: grid; grid-template-columns: 220px 1fr; gap: var(--s-10); margin-bottom: var(--s-10); }
+  .sec-num {
+    font-family: var(--font-display); font-style: italic;
+    color: var(--terra); font-size: 22px;
+  }
+  .sec-title {
+    margin: 0; font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px, 4vw, 44px); letter-spacing: -.02em; line-height: 1.05;
+    text-wrap: balance;
+  }
+  .sec-title em { font-style: italic; color: var(--terra); }
+  .sec-desc { color: var(--text-soft); max-width: 60ch; margin: 10px 0 0; text-wrap: pretty; }
+
+  .grid { display: grid; gap: var(--s-6); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-6 { grid-template-columns: repeat(6, 1fr); }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .grid-2, .grid-3, .grid-6 { grid-template-columns: 1fr; }
+    .sec-head { grid-template-columns: 1fr; gap: var(--s-3); }
+  }
+
+  /* ── Vignette cards ────────────────── */
+  .vignette {
+    background: var(--surface);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-lg);
+    padding: var(--s-8);
+    display: grid; gap: 14px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .vignette:hover { transform: translateY(-2px); box-shadow: var(--sh-2); }
+  .vignette .num {
+    font-family: var(--font-display); font-style: italic;
+    color: var(--terra); font-size: 32px; line-height: 1;
+  }
+  .vignette p {
+    margin: 0; font-family: var(--font-display);
+    font-size: 19px; line-height: 1.45; color: var(--bark);
+    font-style: italic;
+  }
+  .vignettes-closer {
+    margin-top: var(--s-8); padding: var(--s-6) 0 0;
+    border-top: .5px dashed var(--line-soft);
+    font-family: var(--font-display); font-style: italic;
+    font-size: var(--t-lg); color: var(--ink); max-width: 70ch;
+    text-wrap: balance;
+  }
+
+  /* ── Mindshift compare ─────────────── */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);
+    align-items: stretch;
+  }
+  @media (max-width: 800px) { .compare { grid-template-columns: 1fr; } }
+  .compare-col {
+    border-radius: var(--r-lg);
+    padding: var(--s-8);
+    border: .5px solid var(--line-soft);
+  }
+  .compare-col.them { background: var(--surface); }
+  .compare-col.us {
+    background: linear-gradient(135deg, var(--terra-50), var(--cream));
+    border-color: var(--terra-100);
+  }
+  .compare-col h4 {
+    margin: 0 0 var(--s-4);
+    font-family: var(--font-body);
+    font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-mute); font-weight: 600;
+  }
+  .compare-col.us h4 { color: var(--terra-700); }
+  .compare-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .compare-col li {
+    padding-left: 28px; position: relative;
+    font-size: var(--t-base); color: var(--text);
+    line-height: 1.5;
+  }
+  .compare-col.them li::before {
+    content: ""; position: absolute; left: 0; top: 9px;
+    width: 16px; height: 1.5px; background: var(--text-mute);
+  }
+  .compare-col.us li::before {
+    content: "♡"; position: absolute; left: 0; top: 0;
+    color: var(--terra); font-size: 16px;
+  }
+  .compare-col.us li { color: var(--terra-900); font-weight: 500; }
+  .compare-footer {
+    margin-top: var(--s-8); padding-top: var(--s-6);
+    border-top: .5px solid var(--line-soft);
+    text-align: center;
+    font-family: var(--font-script); color: var(--terra);
+    font-size: 32px; line-height: 1.1;
+  }
+  .compare-footer span {
+    display: block; margin-top: 8px;
+    font-family: var(--font-body); font-size: var(--t-xs);
+    color: var(--text-mute); letter-spacing: .12em;
+    text-transform: uppercase; font-weight: 600;
+  }
+
+  /* ── Modules ───────────────────────── */
+  .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+  @media (max-width: 900px) { .modules { grid-template-columns: 1fr; } }
+  .module {
+    background: var(--paper);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-lg);
+    padding: var(--s-8);
+    display: grid; gap: 12px;
+    position: relative;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .module:hover { border-color: var(--terra-100); transform: translateY(-2px); }
+  .module .top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .module .num {
+    font-family: var(--font-display); font-style: italic;
+    color: var(--terra); font-size: 18px; font-weight: 500;
+  }
+  .module .videos {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-mute); font-weight: 600;
+  }
+  .module .icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--terra-50);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--terra-700); margin-bottom: 4px;
+  }
+  .module h3 {
+    margin: 0; font-family: var(--font-display);
+    font-weight: 500; font-size: 22px;
+    line-height: 1.2; letter-spacing: -.005em;
+    color: var(--ink);
+  }
+  .module p {
+    margin: 0; font-size: var(--t-sm); color: var(--text-soft);
+    line-height: 1.55;
+  }
+
+  /* ── Quote block ───────────────────── */
+  .quote-block {
+    padding: var(--s-12) var(--s-10);
+    background: linear-gradient(135deg, var(--terra-50), var(--cream));
+    border-radius: var(--r-xl);
+    position: relative; overflow: hidden;
+    margin: var(--s-8) 0;
+  }
+  .quote-block::before {
+    content: "“"; position: absolute; top: -36px; left: 24px;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 280px; color: color-mix(in oklch, var(--terra) 30%, transparent);
+    line-height: 1; pointer-events: none;
+  }
+  .quote-block blockquote {
+    margin: 0; font-family: var(--font-display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(24px, 3vw, 36px); line-height: 1.3;
+    color: var(--bark); max-width: 56ch; text-wrap: pretty;
+    position: relative;
+  }
+  .quote-block cite {
+    display: block; margin-top: 22px;
+    font-family: var(--font-body); font-style: normal;
+    font-size: var(--t-xs); letter-spacing: .14em; text-transform: uppercase;
+    color: var(--terra-700); font-weight: 600;
+  }
+
+  /* ── For-whom (do/don't) ───────────── */
+  .vt {
+    display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);
+  }
+  .vt > div {
+    border: .5px solid var(--line-soft); border-radius: var(--r-lg);
+    padding: var(--s-8); background: var(--paper);
+  }
+  .vt .yes { border-left: 3px solid var(--terra); }
+  .vt .no  { border-left: 3px solid var(--bark); opacity: .92; }
+  .vt h5 { margin: 0 0 14px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+  .vt .yes h5 { color: var(--terra); }
+  .vt .no  h5 { color: var(--bark); }
+  .vt ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .vt li { padding-left: 24px; position: relative; line-height: 1.5; color: var(--text-soft); }
+  .vt .yes li::before { content: "♡"; position: absolute; left: 0; top: 0; color: var(--terra); }
+  .vt .no  li::before { content: "—"; position: absolute; left: 0; top: 0; color: var(--bark); }
+  @media (max-width: 800px) { .vt { grid-template-columns: 1fr; } }
+
+  /* ── Early-Bird ────────────────────── */
+  .earlybird {
+    background: var(--ink); color: var(--paper);
+    border-radius: var(--r-xl);
+    padding: var(--s-12) var(--s-10);
+    display: grid; grid-template-columns: 1.05fr .95fr; gap: var(--s-10);
+    align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .earlybird::before {
+    content: ""; position: absolute; right: -160px; top: -160px;
+    width: 480px; height: 480px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--terra-400), transparent 60%);
+    opacity: .55; pointer-events: none;
+  }
+  @media (max-width: 800px) { .earlybird { grid-template-columns: 1fr; } }
+  .earlybird .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 12px; border-radius: var(--r-pill);
+    background: var(--terra); color: #fff;
+    font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .earlybird h3 {
+    margin: 16px 0 var(--s-6); font-family: var(--font-display);
+    font-weight: 400; font-size: clamp(28px, 4vw, 44px); line-height: 1.1;
+    letter-spacing: -.015em; text-wrap: balance;
+  }
+  .earlybird h3 em { font-style: italic; color: var(--terra-200); }
+  .earlybird p { color: color-mix(in oklch, var(--linen) 80%, transparent); margin: 0; max-width: 48ch; }
+  .earlybird .price-row {
+    margin-top: var(--s-8);
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .earlybird .price {
+    font-family: var(--font-display); font-size: 64px; line-height: 1;
+    font-weight: 500; letter-spacing: -.02em; color: #fff;
+  }
+  .earlybird .price small {
+    display: block; font-size: 13px; color: color-mix(in oklch, var(--linen) 60%, transparent);
+    font-family: var(--font-body); font-weight: 400; letter-spacing: .04em;
+    margin-top: 6px;
+  }
+  .earlybird .ctas {
+    margin-top: var(--s-8); display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+  }
+  .earlybird .ctas .small {
+    color: color-mix(in oklch, var(--linen) 60%, transparent);
+    font-size: 13px;
+  }
+  .earlybird-bonus {
+    background: color-mix(in oklch, var(--paper) 8%, transparent);
+    border: .5px solid color-mix(in oklch, var(--paper) 16%, transparent);
+    border-radius: var(--r-lg);
+    padding: var(--s-8);
+    backdrop-filter: blur(10px);
+    position: relative;
+  }
+  .earlybird-bonus h4 {
+    font-family: var(--font-script); font-size: 30px; line-height: 1;
+    color: var(--terra-200); margin: 0 0 var(--s-4); font-weight: 500;
+  }
+  .earlybird-bonus ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .earlybird-bonus li {
+    padding-left: 28px; position: relative;
+    color: color-mix(in oklch, var(--linen) 92%, transparent);
+    line-height: 1.5;
+  }
+  .earlybird-bonus li::before {
+    content: "♡"; position: absolute; left: 0; top: 0;
+    color: var(--terra-200); font-size: 18px;
+  }
+  .earlybird-bonus li b { color: #fff; font-weight: 600; }
+  .earlybird-bonus .stock {
+    margin-top: var(--s-6); padding-top: var(--s-4);
+    border-top: .5px dashed color-mix(in oklch, var(--paper) 16%, transparent);
+    font-size: var(--t-xs); color: color-mix(in oklch, var(--linen) 70%, transparent);
+    letter-spacing: .04em;
+  }
+  .earlybird-bonus .stock b { color: var(--terra-200); font-weight: 700; }
+
+  /* ── Testimonials ──────────────────── */
+  .testi {
+    background: var(--surface); border-radius: var(--r-lg); padding: var(--s-8);
+    border: .5px solid var(--line-soft); display: grid; gap: 16px;
+  }
+  .testi .stars { color: var(--terra); letter-spacing: 4px; font-size: 18px; }
+  .testi blockquote {
+    margin: 0; font-family: var(--font-display); font-style: italic;
+    font-size: 18px; line-height: 1.45; color: var(--bark);
+    text-wrap: pretty;
+  }
+  .testi .who { font-size: 13px; color: var(--text-mute); }
+  .testi .who b { color: var(--ink); font-weight: 600; display: block; }
+
+  /* ── FAQ ───────────────────────────── */
+  .faq { display: grid; gap: var(--s-3); max-width: 820px; margin: 0 auto; }
+  .faq details {
+    background: var(--paper);
+    border: .5px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 18px 22px;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .faq details[open] {
+    border-color: var(--terra-100);
+    background: var(--terra-50);
+  }
+  .faq summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 19px; font-weight: 500;
+    color: var(--ink); letter-spacing: -.005em;
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+";
+    font-family: var(--font-body); font-weight: 400;
+    font-size: 22px; color: var(--terra);
+    line-height: 1;
+    transition: transform .2s ease;
+    flex-shrink: 0;
+  }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq .answer {
+    margin-top: 12px; padding-top: 12px;
+    border-top: .5px dashed var(--line-soft);
+    color: var(--text-soft); line-height: 1.6;
+  }
+
+  /* ── Final CTA ─────────────────────── */
+  .final-cta {
+    background: linear-gradient(135deg, var(--terra-50), var(--cream));
+    border-radius: var(--r-xl);
+    padding: var(--s-16) var(--s-10);
+    border: .5px solid var(--terra-100);
+    display: grid; gap: var(--s-8);
+    text-align: center;
+  }
+  .final-cta .pic {
+    width: 140px; height: 140px; border-radius: 50%;
+    margin: 0 auto;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 10px, rgba(0,0,0,.045) 10px 11px),
+      linear-gradient(180deg, var(--linen), var(--sand));
+    border: 1px dashed var(--bark);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--bark); padding: 12px;
+  }
+  .final-cta .pic svg { width: 24px; height: 24px; opacity: .7; margin-bottom: 4px; }
+  .final-cta .pic .lbl {
+    font-family: var(--font-body); font-size: 9px;
+    font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .final-cta .pic .dim {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 9px; opacity: .6; margin-top: 2px;
+  }
+  .final-cta h3 {
+    margin: 0; font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -.015em;
+    text-wrap: balance; max-width: 22ch; margin: 0 auto;
+  }
+  .final-cta h3 em { font-style: italic; color: var(--terra); }
+  .final-cta .note {
+    font-family: var(--font-script); font-size: 26px; line-height: 1.3;
+    color: var(--bark); max-width: 30ch; margin: 0 auto;
+    font-weight: 500;
+  }
+  .final-cta .note span {
+    display: block; font-family: var(--font-body); font-style: normal;
+    font-size: var(--t-xs); color: var(--text-mute);
+    letter-spacing: .14em; text-transform: uppercase;
+    margin-top: 8px; font-weight: 600;
+  }
+
+  /* ── Footer ────────────────────────── */
+  .footer {
+    background: var(--ink); color: var(--linen);
+    border-radius: var(--r-lg);
+    padding: var(--s-10) var(--s-8);
+    margin: var(--s-12) 0 var(--s-8);
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--s-8);
+  }
+  @media (max-width: 800px) { .footer { grid-template-columns: 1fr 1fr; } }
+  .footer h5 {
+    font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
+    margin: 0 0 14px; color: color-mix(in oklch, var(--linen) 75%, transparent);
+    font-weight: 600;
+  }
+  .footer a {
+    color: var(--linen); text-decoration: none;
+    opacity: .85; display: block; padding: 4px 0; font-size: 14px;
+  }
+  .footer a:hover { opacity: 1; color: var(--terra-200); }
+  .footer .brand-foot {
+    font-family: var(--font-script); font-size: 36px; line-height: 1;
+    color: var(--terra-200); margin-bottom: 12px;
+  }
+  .footer .legal {
+    grid-column: 1 / -1; padding-top: var(--s-6);
+    border-top: .5px solid color-mix(in oklch, var(--paper) 16%, transparent);
+    display: flex; flex-wrap: wrap; gap: 24px;
+    font-size: 12px; opacity: .65;
+  }
+
+  /* ── Headline tags ─────────────────── */
+  .hl-stamp {
+    display: inline-block;
+    font-family: var(--font-script);
+    color: var(--terra); font-size: 30px; line-height: 1; font-weight: 500;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────── Topbar ───────── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="mark"></div>
+      <div class="name">moni <em>goes</em> wild</div>
+    </div>
+    <div class="topbar-meta">
+      <span><b>Angstkurs</b> · für Bestandskund:innen</span>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ───────── Hero ───────── -->
+  <header class="hero">
+    <div>
+      <div class="eyebrow">18 Videos · gechannelt durch meine Tiere</div>
+      <h1 data-hl="A">
+        Du musst keine Angst<br/>
+        <em>besiegen.</em>
+      </h1>
+      <p class="lede" data-hl="A">
+        Du musst Sicherheit in dir finden. Dann verliert die Angst ihre Macht — von ganz alleine.
+        18 Videos, die alles beerdigen, was du bisher über „durch die Angst durch" gehört hast.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-handwrite" href="#earlybird">Ich will dabei sein :)</a>
+        <span class="meta">Gedrucktes Workbook · nur die ersten <b data-bind="seats">25</b> Besteller:innen</span>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <div class="pic ph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        <span class="lbl">Bild · Ramona &amp; Mila</span>
+        <span class="dim">candid · 4:5</span>
+      </div>
+      <div class="stamp-h">Hi :)</div>
+      <p>Ich hab kein Skript geschrieben. Die Tiere haben.<br/>
+      Mila, Hermine, Ravi, Kerone und Tari sagen dir, was sie mir gesagt haben — und warum das alles ändert.</p>
+    </aside>
+    <div class="hero-quote">
+      „Ich brauch 'n Angstkurs, ganz dringend, weil ich keine Lust mehr hab, mich von meiner Angst kleinhalten zu lassen."
+      <span>— Ramona, Video 1</span>
+    </div>
+  </header>
+
+  <!-- ───────── 01 Vignetten ───────── -->
+  <section class="sec" id="vignetten">
+    <div class="sec-head">
+      <div class="sec-num">01 — Erkenn dich</div>
+      <div>
+        <h2 class="sec-title">Wenn du eines dieser Gefühle kennst, bist du <em>hier richtig.</em></h2>
+        <p class="sec-desc">Drei kleine Szenen. Wenn du dich in nur einer davon erkennst, hast du keine Angst. Du hast eine Tür, die du noch nicht geöffnet hast.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="vignette">
+        <div class="num">i.</div>
+        <p>Du wolltest schon dreimal anrufen. Dreimal hat dein Daumen die Nummer gewählt. Dreimal hast du wieder aufgelegt — und es dir selbst nicht erklärt.</p>
+      </div>
+      <div class="vignette">
+        <div class="num">ii.</div>
+        <p>„Ich mach das nächste Woche." Du sagst dir das seit drei Monaten. Inzwischen weißt du, dass nächste Woche nicht kommt — aber du sagst es trotzdem.</p>
+      </div>
+      <div class="vignette">
+        <div class="num">iii.</div>
+        <p>Du stehst vor dem, was du eigentlich willst. Eintritt bezahlt. Plan gemacht. Und du fühlst nur: heute nicht. Und dann verurteilst du dich dafür.</p>
+      </div>
+    </div>
+
+    <p class="vignettes-closer">
+      Wenn du dich in einer dieser Szenen erkennst, hast du keine Angst. Du hast eine Tür, die du noch nicht geöffnet hast.
+    </p>
+  </section>
+
+  <!-- ───────── 02 Mindshift ───────── -->
+  <section class="sec" id="mindshift">
+    <div class="sec-head">
+      <div class="sec-num">02 — Der Mindshift</div>
+      <div>
+        <h2 class="sec-title">Was diesen Kurs <em>anders macht.</em></h2>
+        <p class="sec-desc">Die meisten Angstkurse predigen „mehr Mut, härter dagegen". Dieser Kurs sagt etwas anderes — und zwar zweimal so leise, weil's stimmt.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="compare-col them">
+        <h4>Andere Kurse sagen</h4>
+        <ul>
+          <li>Du musst durch die Angst durch.</li>
+          <li>Sei mutiger. Kämpfe härter. Spring rein.</li>
+          <li>Bekämpfe deine Glaubenssätze.</li>
+          <li>Werde angstfrei — irgendwann.</li>
+        </ul>
+      </div>
+      <div class="compare-col us">
+        <h4>Dieser Kurs sagt</h4>
+        <ul>
+          <li>Manchmal ist „nein" das Mutigste.</li>
+          <li>Sicherheit findest du in dir, nicht durch Bekämpfen.</li>
+          <li>Dein Bauchgefühl ist mutiger als jede Affirmation.</li>
+          <li>Du bist schon. Du musst dich nur dafür entscheiden.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="compare-footer">
+      Don't feed the fears.
+      <span>Kerone · Video 13</span>
+    </div>
+  </section>
+
+  <!-- ───────── 03 Module ───────── -->
+  <section class="sec" id="module">
+    <div class="sec-head">
+      <div class="sec-num">03 — Was drin ist</div>
+      <div>
+        <h2 class="sec-title">Sechs Module. <em>Achtzehn Videos.</em></h2>
+        <p class="sec-desc">Mila, Hermine, Tari, Kerone und Ravi haben durch mich gesprochen. Jedes Modul ist ein anderer Tag, ein anderer Tier-Lehrer, ein anderes Stück Wahrheit. Du musst nichts dafür können.</p>
+      </div>
+    </div>
+
+    <div class="modules">
+      <div class="module">
+        <div class="top">
+          <span class="num">i.</span>
+          <span class="videos">3 Videos</span>
+        </div>
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12a9 9 0 0118 0"/><path d="M12 3a14 14 0 010 18"/></svg>
+        </div>
+        <h3>Was Angst wirklich ist</h3>
+        <p>Du erkennst, dass Angst nicht zu dir gehört. Sie hängt an dir wie ein USB-Stick mit Virus — und du lernst, wie du ihn rausziehst.</p>
+      </div>
+      <div class="module">
+        <div class="top">
+          <span class="num">ii.</span>
+          <span class="videos">4 Videos</span>
+        </div>
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg>
+        </div>
+        <h3>Der Mut-Mythos</h3>
+        <p>Du verstehst, warum manche Ängste die Energie nicht wert sind — und wann „fuck it" der einzig richtige Weg ist.</p>
+      </div>
+      <div class="module">
+        <div class="top">
+          <span class="num">iii.</span>
+          <span class="videos">4 Videos</span>
+        </div>
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Im Jetzt sein</h3>
+        <p>„Grade jetzt ist doch alles in Ordnung." Du machst diesen einen Satz zu deinem Anker — und ziehst Vergangenheit nicht mehr in dein Heute.</p>
+      </div>
+      <div class="module">
+        <div class="top">
+          <span class="num">iv.</span>
+          <span class="videos">2 Videos</span>
+        </div>
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-7h6v7"/></svg>
+        </div>
+        <h3>Werkzeuge für den Alltag</h3>
+        <p>Dein eigenes Wunderkerzen-Video. Verankerung im Alltag. „Hält's mich lebendig?" — Tools, die du am gleichen Tag anwendest.</p>
+      </div>
+      <div class="module">
+        <div class="top">
+          <span class="num">v.</span>
+          <span class="videos">2 Videos</span>
+        </div>
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <h3>Der Weg ist das Ziel</h3>
+        <p>Du hörst auf zu warten, bis „es endlich klappt". Schon das Hinsehen ist der Weg — auch wenn von außen niemand etwas sieht.</p>
+      </div>
+      <div class="module">
+        <div class="top">
+          <span class="num">vi.</span>
+          <span class="videos">3 Videos</span>
+        </div>
+        <div class="icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2"/><path d="M3 18c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2"/><path d="M3 6c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2"/></svg>
+        </div>
+        <h3>Die Welle in dir</h3>
+        <p>Du bist nicht die Welle. Du bist das Meer. Wir Frauen sind zyklisch — und genau das ist deine Kraft, nicht deine Schwäche.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── Quote ───────── -->
+  <div class="quote-block">
+    <blockquote>
+      Die einzige Entscheidung, die du treffen musst, ist:<br/>
+      Sehe ich mich selbst?
+    </blockquote>
+    <cite>— Tari, Video 6</cite>
+  </div>
+
+  <!-- ───────── 04 Für wen ───────── -->
+  <section class="sec" id="fuer-wen">
+    <div class="sec-head">
+      <div class="sec-num">04 — Für wen das ist</div>
+      <div>
+        <h2 class="sec-title">Damit kein Missverständnis bleibt — <em>oder Geld umsonst fließt.</em></h2>
+        <p class="sec-desc">Ich filtere lieber zwei Käufer:innen aus, als hundert Enttäuschte mit einem Kurs zu lassen, der nicht für sie gemacht ist.</p>
+      </div>
+    </div>
+
+    <div class="vt">
+      <div class="yes">
+        <h5>Komm rein, wenn …</h5>
+        <ul>
+          <li>du meine Welt schon kennst und eine Tür weitergehen willst.</li>
+          <li>du müde bist von „härter, schneller, mutiger"-Narrativen.</li>
+          <li>du dich im Zyklus zerrissen fühlst und aufhören willst, dich dafür zu verurteilen.</li>
+          <li>du Werkzeuge willst, die im Alltag funktionieren — nicht nur auf der Yogamatte.</li>
+          <li>du bereit bist, Verantwortung für deine Sonnenblumen zu übernehmen.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h5>Lass es lieber, wenn …</h5>
+        <ul>
+          <li>du Therapie suchst — das hier ersetzt keinen Menschen mit Approbation.</li>
+          <li>du eine Anleitung willst „wie ich nie wieder Angst habe". Die gibt's hier nicht.</li>
+          <li>du beschützt werden willst. Das hier macht dich groß, nicht klein.</li>
+          <li>du auf einen Knopf hoffst, der die Arbeit für dich macht.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 05 Early-Bird ───────── -->
+  <section class="sec" id="earlybird">
+    <div class="sec-head">
+      <div class="sec-num">05 — Sei früh dabei</div>
+      <div>
+        <h2 class="sec-title">Nur die ersten <span data-bind="seats">25</span> bekommen <em>das Workbook in die Hand.</em></h2>
+        <p class="sec-desc">Das gedruckte Workbook geht ausschließlich an die ersten <span data-bind="seats">25</span> Besteller:innen — danach ist die Auflage durch. Die geführte Meditation kommt zu jeder Bestellung dazu, solange der Early-Bird läuft.</p>
+      </div>
+    </div>
+
+    <div class="earlybird">
+      <div>
+        <span class="badge">Early Bird</span>
+        <h3>18 Videos. Ein Workbook in deiner Hand. <em>Eine Meditation für leise Tage.</em></h3>
+        <p>Komplettzugang zu allen 18 Videos, sofort und unbegrenzt. Plus die Bonus-Box, solange Vorrat reicht.</p>
+        <div class="price-row">
+          <div class="price">
+            <span id="ld-price">497</span>€
+            <small>einmalig · sofortiger Zugang</small>
+          </div>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-handwrite" href="#" style="background:#fff; color: var(--terra-900);">Ich bin dabei :)</a>
+          <span class="small">Sicherer Checkout · keine Abos</span>
+        </div>
+      </div>
+      <aside class="earlybird-bonus">
+        <h4>Bonus-Box ♡</h4>
+        <ul>
+          <li><b>Gedrucktes Workbook</b> — nur für die ersten <span data-bind="seats">25</span> Besteller:innen, postalisch zu dir.</li>
+          <li><b>Geführte Meditation:</b> „Setz dich wieder auf den Thron" — ca. 15 Min, digital für alle Early-Birds.</li>
+          <li><b>Sofortiger Zugang</b> zu allen Videos und allen Updates.</li>
+        </ul>
+        <div class="stock">Workbook-Auflage: <b><span data-bind="seats">25</span> Stück</b> · streng limitiert</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ───────── 06 Stimmen ───────── -->
+  <section class="sec" id="stimmen">
+    <div class="sec-head">
+      <div class="sec-num">06 — Stimmen</div>
+      <div>
+        <h2 class="sec-title">Was meine Community schon zu mir gesagt hat — <em>für andere Kurse.</em></h2>
+        <p class="sec-desc">Diese Stimmen sind aus der Tierkommunikations-Welt. Sie sagen mehr darüber, wie ich arbeite, als jeder Werbespruch könnte. Echte Angstkurs-Stimmen folgen, sobald die ersten durch sind.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>
+          Ehrlich, das war nicht mein erster Kurs in Tierkommunikation. Aber der Erste, der eine unbeschreiblich tiefe Kommunikation zu meinem eigenen Hund öffnete.
+        </blockquote>
+        <div class="who"><b>Christine M.</b>Trustpilot · TK1</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>
+          Ramona spricht aus, was ich seit Jahren gespürt habe — ohne dass es esoterisch wird. Die Tiere kommen einfach durch.
+        </blockquote>
+        <div class="who"><b>Sandra K.</b>Trustpilot · Sparkling Destiny</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>
+          Ich hab mit Mila und Tari mehr über mich gelernt als mit drei Therapeutinnen. Und das ist kein Witz.
+        </blockquote>
+        <div class="who"><b>Anna S.</b>Trustpilot · Masterclass</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 07 FAQ ───────── -->
+  <section class="sec" id="faq">
+    <div class="sec-head">
+      <div class="sec-num">07 — Was du noch wissen willst</div>
+      <div>
+        <h2 class="sec-title">Ehrliche Antworten. <em>Auch die unbequemen.</em></h2>
+        <p class="sec-desc">Wenn nach dem Lesen noch eine Frage offen ist, schreib mir direkt. Ich beantworte das lieber zweimal, als dass du im Trüben kaufst.</p>
+      </div>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>Brauche ich Vorerfahrung mit Tierkommunikation?</summary>
+        <div class="answer">Nein. Die Tiere channeln durch mich — du musst nichts dafür können. Wenn du noch nie was bei mir gemacht hast, geht's trotzdem. Wenn du TK1 oder Sparkling Destiny hattest, hörst du die Stimmen wieder.</div>
+      </details>
+      <details>
+        <summary>Was, wenn ich nach dem Kurs immer noch Angst habe?</summary>
+        <div class="answer">Wirst du. Genau das ist die Idee. Wer behauptet, du wirst nach einem Kurs angstfrei, lügt. Hier lernst du, mit der Angst zu leben statt gegen sie. Das ist der Unterschied — und genau der trägt dich weiter.</div>
+      </details>
+      <details>
+        <summary>Wie lang habe ich Zugriff?</summary>
+        <div class="answer">Unbegrenzt. Du kannst die Videos so oft gucken, wie du willst. Updates und neue Inhalte landen automatisch in deinem Bereich.</div>
+      </details>
+      <details>
+        <summary>Geht das auch mit dem Handy?</summary>
+        <div class="answer">Ja. Alle Videos laufen auf jedem Gerät — Handy, Tablet, Laptop. Das Workbook gibt's als PDF im Bereich für alle. Das gedruckte Exemplar nur für die ersten <span data-bind="seats">25</span> Besteller:innen.</div>
+      </details>
+      <details>
+        <summary>Was, wenn es nicht das Richtige für mich ist?</summary>
+        <div class="answer">Dann ist es nicht das Richtige. Lies oben „Lass es lieber, wenn ..." nochmal durch. Wenn du dich da erkennst, kauf nicht — ich wäre lieber das, was wir beide nicht haben, als das, was du nicht brauchst.</div>
+      </details>
+      <details>
+        <summary>Wer sind diese Tiere überhaupt?</summary>
+        <div class="answer">Mila war meine leise Hündin. Hermine ist eine Henne mit Welt-Ansage. Ravi (offiziell Ravion), Kerone und Amiro sind meine Pferde. Tari ist die Henne mit Queen Energy — ich nenne sie liebevoll Tari-Maus. Kasimir ist mein Akasha-Hüter. Sie sind die eigentlichen Lehrer dieses Kurses — ich bin die, die zuhört und dir sagt, was sie sagen.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ───────── 08 Final CTA ───────── -->
+  <section class="sec" id="schluss">
+    <div class="final-cta">
+      <div class="pic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
+        <span class="lbl">Portrait</span>
+        <span class="dim">Ramona</span>
+      </div>
+      <h3>Wenn das hier was in dir berührt hat, <em>komm mit.</em></h3>
+      <div class="note">
+        Ich hab kein Skript geschrieben.<br/>
+        Die Tiere haben.<br/>
+        Ich freu mich auf dich.
+        <span>— Ramona</span>
+      </div>
+      <div>
+        <a class="btn btn-handwrite" href="#earlybird">Ich bin dabei :)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── Footer ───────── -->
+  <footer class="footer">
+    <div>
+      <div class="brand-foot">moni goes wild ♡</div>
+      <p style="opacity:.75; max-width: 30ch; margin:0; font-size: 14px;">Aus Liebe zu Tieren — und zu dir selbst. Tierkommunikation, Wildtierillustrationen, Persönlichkeitsentwicklung.</p>
+    </div>
+    <div>
+      <h5>Mehr</h5>
+      <a href="https://monigoeswild.de/home">Tierkommunikation</a>
+      <a href="https://monigoeswild.de/store">Shop</a>
+      <a href="https://monigoeswild.de/kontakt">Kontakt</a>
+    </div>
+    <div>
+      <h5>Kurse</h5>
+      <a href="#">Starterkurs (TK1)</a>
+      <a href="#">Sparkling Destiny</a>
+      <a href="#">Angstkurs</a>
+    </div>
+    <div class="legal">
+      <span>© 2026 moni.goes.wild · Ramona Hoffmann</span>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">AGB</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ───────── Tweaks Panel ───────── -->
+<div id="tweaks-root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "typeDirection": "classic",
+  "primary": "#bf6b4d",
+  "surface": "#f7f3ec",
+  "ink": "#2a241d",
+  "headline": "A",
+  "price": 497,
+  "earlyBirdSeats": 25
+}/*EDITMODE-END*/;
+
+const TYPO_DIRECTIONS = {
+  default: {
+    label: "Fraunces · DM Sans · Caveat",
+    display: "'Fraunces', Georgia, serif",
+    body:    "'DM Sans', system-ui, sans-serif",
+    script:  "'Caveat', 'Brush Script MT', cursive",
+  },
+  editorial: {
+    label: "Cormorant · Work Sans · Reenie",
+    display: "'Cormorant Garamond', Georgia, serif",
+    body:    "'Work Sans', system-ui, sans-serif",
+    script:  "'Reenie Beanie', cursive",
+  },
+  classic: {
+    label: "Libre Caslon · Inter · Homemade Apple",
+    display: "'Libre Caslon Text', Georgia, serif",
+    body:    "'Inter', system-ui, sans-serif",
+    script:  "'Homemade Apple', cursive",
+  },
+};
+
+const HEADLINES = {
+  A: {
+    title: 'Du musst keine Angst<br/><em>besiegen.</em>',
+    lede:  'Du musst Sicherheit in dir finden. Dann verliert die Angst ihre Macht — von ganz alleine. 18 Videos, die alles beerdigen, was du bisher über „durch die Angst durch" gehört hast.',
+  },
+  B: {
+    title: 'Wenn dein Tier sich versteckt,<br/>sucht es etwas, <em>das wir noch nicht hören.</em>',
+    lede:  'Du auch. 18 Videos, gechannelt durch Mila, Hermine, Tari und Kerone — gegen jedes „durch-die-Angst-durch"-Narrativ, das du je gehört hast.',
+  },
+  C: {
+    title: 'Du bist. <em>Punkt.</em>',
+    lede:  'Alles, was nach „ich bin" kommt, ist Hinzugefügtes vom Ego. Mila, Hermine und Kerone erzählen dir in 18 Videos, was passiert, wenn du den Punkt setzt.',
+  },
+};
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    const r = document.documentElement;
+    const dir = TYPO_DIRECTIONS[t.typeDirection] || TYPO_DIRECTIONS.default;
+    r.style.setProperty('--font-display', dir.display);
+    r.style.setProperty('--font-body',    dir.body);
+    r.style.setProperty('--font-script',  dir.script);
+    r.style.setProperty('--primary', t.primary);
+    r.style.setProperty('--terra',   t.primary);
+    r.style.setProperty('--surface', t.surface);
+    r.style.setProperty('--cream',   t.surface);
+    r.style.setProperty('--ink',     t.ink);
+    r.style.setProperty('--text',    t.ink);
+  }, [t.typeDirection, t.primary, t.surface, t.ink]);
+
+  React.useEffect(() => {
+    const h = HEADLINES[t.headline] || HEADLINES.A;
+    document.querySelectorAll('.hero h1[data-hl]').forEach((el) => { el.innerHTML = h.title; });
+    document.querySelectorAll('.hero .lede[data-hl]').forEach((el) => { el.textContent = h.lede; });
+  }, [t.headline]);
+
+  React.useEffect(() => {
+    document.querySelectorAll('#ld-price').forEach((el) => { el.textContent = String(t.price); });
+  }, [t.price]);
+
+  React.useEffect(() => {
+    document.querySelectorAll('[data-bind="seats"]').forEach((el) => { el.textContent = String(t.earlyBirdSeats); });
+  }, [t.earlyBirdSeats]);
+
+  return (
+    <TweaksPanel title="LP-Tweaks">
+      <TweakSection label="Headline" />
+      <TweakRadio
+        label="Variante"
+        value={t.headline}
+        options={[
+          { value: 'A', label: 'A · Sicherheit' },
+          { value: 'B', label: 'B · Tier-Hook' },
+          { value: 'C', label: 'C · Du bist.' },
+        ]}
+        onChange={(v) => setTweak('headline', v)}
+      />
+
+      <TweakSection label="Preis & Knappheit" />
+      <TweakNumber label="Preis" value={t.price} min={97} max={997} step={10} unit="€"
+                   onChange={(v) => setTweak('price', v)} />
+      <TweakNumber label="Early-Bird Plätze" value={t.earlyBirdSeats} min={0} max={500} step={5}
+                   onChange={(v) => setTweak('earlyBirdSeats', v)} />
+
+      <TweakSection label="Typografie" />
+      <TweakRadio
+        label="Stack"
+        value={t.typeDirection}
+        options={[
+          { value: 'default',   label: 'Default' },
+          { value: 'editorial', label: 'Editorial' },
+          { value: 'classic',   label: 'Classic' },
+        ]}
+        onChange={(v) => setTweak('typeDirection', v)}
+      />
+      <div className="twk-row">
+        <div className="twk-lbl"><span style={{fontSize: 10, opacity: .7}}>
+          {TYPO_DIRECTIONS[t.typeDirection].label}
+        </span></div>
+      </div>
+
+      <TweakSection label="Farben" />
+      <TweakColor label="Primär (Terra)" value={t.primary}
+                  onChange={(v) => setTweak('primary', v)} />
+      <TweakColor label="Surface (Creme)" value={t.surface}
+                  onChange={(v) => setTweak('surface', v)} />
+      <TweakColor label="Ink (Text)" value={t.ink}
+                  onChange={(v) => setTweak('ink', v)} />
+
+      <TweakSection label="Reset" />
+      <TweakButton label="Default wiederherstellen" secondary
+        onClick={() => {
+          setTweak({
+            typeDirection: 'default',
+            primary: '#bf6b4d',
+            surface: '#f7f3ec',
+            ink: '#2a241d',
+            headline: 'A',
+            price: 497,
+            earlyBirdSeats: 25,
+          });
+        }} />
+    </TweaksPanel>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+</script>
+
+</body>
+</html>
