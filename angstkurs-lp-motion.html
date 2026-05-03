@@ -1,0 +1,1725 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Angstkurs — moni.goes.wild</title>
+<meta name="description" content="22 Videos. 9 Module. Sicherheit in dir finden statt Angst bekämpfen." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Homemade+Apple&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600;700&family=Reenie+Beanie&display=swap" rel="stylesheet">
+<style>
+  /* ════════════════════════════════════════════════════════════
+     DESIGN TOKENS
+     ════════════════════════════════════════════════════════════ */
+  :root {
+    --paper:        oklch(98% 0.012 80);
+    --cream:        oklch(96% 0.018 78);
+    --sand:         oklch(92% 0.022 78);
+    --linen:        oklch(88% 0.024 75);
+    --stone:        oklch(72% 0.018 70);
+    --bark:         oklch(45% 0.020 60);
+    --ink:          oklch(24% 0.018 50);
+    --ink-soft:     oklch(34% 0.018 55);
+
+    --terra-50:     oklch(96% 0.020 45);
+    --terra-100:    oklch(90% 0.045 45);
+    --terra-200:    oklch(82% 0.080 42);
+    --terra-400:    oklch(68% 0.120 40);
+    --terra:        oklch(60% 0.140 38);
+    --terra-700:    oklch(48% 0.130 35);
+    --terra-900:    oklch(32% 0.085 32);
+
+    --sage-50:      oklch(96% 0.018 145);
+    --sage-100:     oklch(90% 0.030 145);
+    --sage:         oklch(72% 0.045 145);
+    --sage-700:     oklch(48% 0.045 145);
+
+    --rust:         oklch(50% 0.140 35);
+
+    --bg:           var(--paper);
+    --surface:      var(--cream);
+    --line:         oklch(82% 0.020 75);
+    --line-soft:    oklch(90% 0.018 75);
+    --text:         var(--ink);
+    --text-soft:    var(--ink-soft);
+    --text-mute:    var(--stone);
+
+    --font-display: 'Libre Caslon Text', Georgia, serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+    --font-script:  'Homemade Apple', cursive;
+
+    --ease:         cubic-bezier(.2, .7, .2, 1);
+    --ease-out-expo:cubic-bezier(.19, 1, .22, 1);
+    --dur-fast:     .35s;
+    --dur:          .7s;
+    --dur-slow:     1.2s;
+
+    --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px; --r-2xl: 32px; --r-pill: 999px;
+
+    --shadow-sm: 0 1px 2px rgba(60, 40, 20, .06), 0 1px 1px rgba(60, 40, 20, .04);
+    --shadow:    0 8px 24px rgba(60, 40, 20, .08), 0 1px 2px rgba(60, 40, 20, .06);
+    --shadow-lg: 0 24px 48px rgba(60, 40, 20, .12), 0 2px 8px rgba(60, 40, 20, .06);
+  }
+
+  * { box-sizing: border-box; }
+  *::selection { background: var(--terra-100); color: var(--terra-900); }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+
+  /* ════════════════════════════════════════════════════════════
+     ANIMATIONS  ·  Intersection-Observer-driven
+     ════════════════════════════════════════════════════════════ */
+  [data-anim] {
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+    will-change: opacity, transform;
+  }
+  [data-anim="fade-up"]    { transform: translateY(28px); }
+  [data-anim="fade-down"]  { transform: translateY(-28px); }
+  [data-anim="fade-left"]  { transform: translateX(40px); }
+  [data-anim="fade-right"] { transform: translateX(-40px); }
+  [data-anim="zoom"]       { transform: scale(.96); }
+  [data-anim="blur"]       { filter: blur(8px); transition: opacity var(--dur-slow) var(--ease), filter var(--dur-slow) var(--ease); }
+
+  [data-anim].is-in { opacity: 1; transform: none; filter: none; }
+
+  [data-stagger] > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  [data-stagger].is-in > * { opacity: 1; transform: none; }
+  [data-stagger].is-in > *:nth-child(1) { transition-delay: 0ms; }
+  [data-stagger].is-in > *:nth-child(2) { transition-delay: 100ms; }
+  [data-stagger].is-in > *:nth-child(3) { transition-delay: 200ms; }
+  [data-stagger].is-in > *:nth-child(4) { transition-delay: 300ms; }
+  [data-stagger].is-in > *:nth-child(5) { transition-delay: 400ms; }
+  [data-stagger].is-in > *:nth-child(6) { transition-delay: 500ms; }
+  [data-stagger].is-in > *:nth-child(7) { transition-delay: 600ms; }
+  [data-stagger].is-in > *:nth-child(8) { transition-delay: 700ms; }
+  [data-stagger].is-in > *:nth-child(9) { transition-delay: 800ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001s !important; transition-duration: .001s !important; }
+    [data-anim], [data-stagger] > * { opacity: 1 !important; transform: none !important; filter: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* shimmer for hero text reveal */
+  @keyframes hero-line {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero-headline > span {
+    display: block; opacity: 0;
+    animation: hero-line .9s var(--ease-out-expo) forwards;
+  }
+  .hero-headline > span:nth-child(1) { animation-delay: .15s; }
+  .hero-headline > span:nth-child(2) { animation-delay: .35s; }
+  .hero-headline > span:nth-child(3) { animation-delay: .55s; }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: .6; transform: scale(1); }
+    50%      { opacity: 1;  transform: scale(1.05); }
+  }
+  @keyframes scroll-cue {
+    0%, 100% { transform: translateY(0); opacity: .55; }
+    50%      { transform: translateY(8px); opacity: 1; }
+  }
+  @keyframes wave-drift {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     LAYOUT
+     ════════════════════════════════════════════════════════════ */
+  .shell {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 56px);
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     TOPBAR
+     ════════════════════════════════════════════════════════════ */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 50;
+    transition: background var(--dur-fast) var(--ease), backdrop-filter var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), padding var(--dur-fast) var(--ease);
+    padding: 18px 0;
+  }
+  .topbar.is-scrolled {
+    background: color-mix(in oklch, var(--paper) 78%, transparent);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-bottom: .5px solid var(--line-soft);
+    padding: 12px 0;
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand .mark {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, var(--terra-200), var(--terra) 75%);
+    box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);
+    transition: transform var(--dur-fast) var(--ease);
+  }
+  .brand:hover .mark { transform: rotate(-12deg) scale(1.05); }
+  .brand-name {
+    font-family: 'Caveat', cursive;
+    font-size: 26px; line-height: 1; color: var(--ink); font-weight: 600;
+  }
+  .brand-name em { font-style: normal; color: var(--terra); font-weight: 700; }
+  .topbar-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 20px; border-radius: var(--r-pill);
+    background: var(--ink); color: var(--paper);
+    font-size: 14px; font-weight: 500;
+    transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+  }
+  .topbar-cta:hover { background: var(--terra-700); transform: translateY(-1px); }
+
+  .scroll-progress {
+    position: fixed; top: 0; left: 0;
+    height: 2px; background: var(--terra);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform .1s linear;
+    z-index: 51;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════════ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    padding: clamp(120px, 14vh, 180px) 0 clamp(60px, 8vh, 100px);
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 75% 30%, color-mix(in oklch, var(--terra) 18%, transparent), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 20% 80%, color-mix(in oklch, var(--sage) 12%, transparent), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: clamp(40px, 6vw, 80px);
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 6px 14px; border-radius: var(--r-pill);
+    background: color-mix(in oklch, var(--terra) 8%, transparent);
+    border: .5px solid var(--terra-100);
+    color: var(--terra-700);
+    font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: clamp(20px, 3vh, 32px);
+    opacity: 0;
+    animation: hero-line .8s var(--ease-out-expo) forwards;
+    animation-delay: 0s;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--terra);
+    animation: pulse-soft 2.4s ease-in-out infinite;
+  }
+  .hero-headline {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(40px, 6.5vw, 84px);
+    line-height: 1.0;
+    letter-spacing: -.025em;
+    color: var(--ink);
+    margin: 0 0 clamp(20px, 3vh, 32px);
+  }
+  .hero-headline em { font-style: italic; color: var(--terra); }
+  .hero-lede {
+    font-size: clamp(17px, 1.4vw, 20px);
+    color: var(--text-soft);
+    max-width: 50ch;
+    margin: 0 0 clamp(28px, 4vh, 40px);
+    text-wrap: pretty;
+    opacity: 0;
+    animation: hero-line .9s var(--ease-out-expo) forwards;
+    animation-delay: .8s;
+  }
+  .hero-cta-row {
+    display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+    opacity: 0;
+    animation: hero-line .9s var(--ease-out-expo) forwards;
+    animation-delay: 1s;
+  }
+  .hero-meta {
+    color: var(--text-mute);
+    font-size: 13px;
+  }
+  .hero-meta b { color: var(--ink); font-weight: 600; }
+  .hero-eb {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    background: color-mix(in oklch, var(--terra) 7%, transparent);
+    border: .5px solid var(--terra-100);
+    border-radius: var(--r-pill);
+    color: var(--terra-900);
+    font-size: 13px;
+  }
+  .hero-eb b { color: var(--terra-700); font-weight: 600; }
+  .hero-eb .eb-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--terra);
+    box-shadow: 0 0 0 4px color-mix(in oklch, var(--terra) 18%, transparent);
+    animation: pulse-soft 1.8s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  .hero-card {
+    position: relative;
+    padding: 28px;
+    background: var(--paper);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-2xl);
+    box-shadow: var(--shadow);
+    display: grid; gap: 20px;
+    transform: rotate(.8deg);
+    opacity: 0;
+    animation: hero-line 1s var(--ease-out-expo) forwards;
+    animation-delay: 1.2s;
+  }
+  .hero-card .stamp {
+    position: absolute; top: -16px; left: -10px;
+    background: var(--terra); color: var(--paper);
+    width: 64px; height: 64px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Caveat', cursive; font-size: 24px; font-weight: 600;
+    line-height: 1; text-align: center;
+    box-shadow: var(--shadow);
+    transform: rotate(-12deg);
+  }
+
+  .hero-quote {
+    margin-top: clamp(40px, 6vh, 64px);
+    padding-top: clamp(28px, 4vh, 40px);
+    border-top: .5px solid var(--line-soft);
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(17px, 1.5vw, 22px);
+    color: var(--bark);
+    max-width: 64ch;
+  }
+  .hero-quote cite {
+    display: block; margin-top: 10px;
+    font-family: var(--font-body); font-style: normal;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  .scroll-cue {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text-mute); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    animation: scroll-cue 2s ease-in-out infinite;
+  }
+  @media (max-width: 880px) { .scroll-cue { display: none; } }
+
+  /* ════════════════════════════════════════════════════════════
+     BUTTONS
+     ════════════════════════════════════════════════════════════ */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 28px;
+    border: 0; border-radius: var(--r-pill);
+    font-family: var(--font-body); font-weight: 500;
+    font-size: 15px; line-height: 1; cursor: pointer;
+    transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--terra); color: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover { background: var(--terra-700); box-shadow: var(--shadow); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-ghost {
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover { background: var(--surface); border-color: var(--bark); }
+  .btn-handwrite {
+    font-family: 'Caveat', cursive; font-size: 22px; font-weight: 600;
+    background: var(--ink); color: var(--paper);
+    padding: 16px 32px 14px;
+    box-shadow: var(--shadow);
+  }
+  .btn-handwrite:hover { background: var(--terra-700); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .btn .arrow { transition: transform var(--dur-fast) var(--ease); }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ════════════════════════════════════════════════════════════
+     SECTION FRAME
+     ════════════════════════════════════════════════════════════ */
+  .sec {
+    padding: clamp(80px, 12vh, 140px) 0;
+    position: relative;
+  }
+  .sec-divider {
+    height: 1px; width: 80px;
+    background: var(--terra);
+    margin-bottom: 24px;
+  }
+  .sec-eyebrow {
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--terra-700); font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .sec-title {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1; letter-spacing: -.02em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+    max-width: 22ch;
+  }
+  .sec-title em { font-style: italic; color: var(--terra); }
+  .sec-desc {
+    color: var(--text-soft);
+    font-size: clamp(15px, 1.2vw, 18px);
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+  .sec-head {
+    margin-bottom: clamp(40px, 6vh, 64px);
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     TRUST STRIP (marquee feel)
+     ════════════════════════════════════════════════════════════ */
+  .trust-strip {
+    border-top: .5px solid var(--line-soft);
+    border-bottom: .5px solid var(--line-soft);
+    padding: 22px 0;
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .trust-track {
+    display: flex; gap: 56px; align-items: center;
+    flex-wrap: wrap; justify-content: center;
+  }
+  .trust-item {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--bark);
+    font-size: 14px; font-weight: 500;
+  }
+  .trust-item svg { width: 18px; height: 18px; color: var(--terra); }
+  .trust-item .num {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: 22px; color: var(--ink);
+    letter-spacing: -.01em;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     VIGNETTES
+     ════════════════════════════════════════════════════════════ */
+  .vignettes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+  @media (max-width: 880px) { .vignettes { grid-template-columns: 1fr; } }
+  .vignette {
+    position: relative;
+    padding: 36px 32px;
+    background: var(--paper);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-xl);
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .vignette:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: var(--terra-100);
+  }
+  .vignette::before {
+    content: attr(data-num);
+    position: absolute; top: 24px; right: 28px;
+    font-family: var(--font-display); font-style: italic;
+    color: var(--terra-200);
+    font-size: 56px; line-height: 1;
+    letter-spacing: -.02em;
+    transition: color var(--dur) var(--ease);
+  }
+  .vignette:hover::before { color: var(--terra-400); }
+  .vignette p {
+    margin: 0; font-family: var(--font-display);
+    font-size: 19px; line-height: 1.45; color: var(--bark);
+    font-style: italic;
+    max-width: 22ch;
+  }
+  .vignettes-closer {
+    margin-top: clamp(40px, 6vh, 64px);
+    padding-top: 32px;
+    border-top: .5px solid var(--line-soft);
+    font-family: var(--font-display); font-style: italic;
+    font-size: clamp(18px, 1.6vw, 24px);
+    color: var(--ink);
+    max-width: 56ch;
+    text-wrap: balance;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     MINDSHIFT COMPARE
+     ════════════════════════════════════════════════════════════ */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: var(--r-2xl);
+    overflow: hidden;
+    border: .5px solid var(--line-soft);
+  }
+  @media (max-width: 760px) { .compare { grid-template-columns: 1fr; } }
+  .compare-col {
+    padding: clamp(32px, 4vw, 48px);
+    background: var(--paper);
+  }
+  .compare-col.them {
+    background: var(--surface);
+    border-right: .5px solid var(--line-soft);
+  }
+  @media (max-width: 760px) {
+    .compare-col.them { border-right: 0; border-bottom: .5px solid var(--line-soft); }
+  }
+  .compare-col.us {
+    background: linear-gradient(135deg, var(--terra-50), var(--cream));
+  }
+  .compare-col h4 {
+    margin: 0 0 28px;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-mute); font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .compare-col.us h4 { color: var(--terra-700); }
+  .compare-col h4::before {
+    content: ""; width: 24px; height: 1px;
+    background: currentColor;
+    display: inline-block;
+  }
+  .compare-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+  .compare-list li {
+    padding-left: 32px; position: relative;
+    font-size: 17px; line-height: 1.5;
+    transition: transform var(--dur-fast) var(--ease);
+  }
+  .compare-col.them li::before {
+    content: ""; position: absolute; left: 0; top: 12px;
+    width: 18px; height: 1px; background: var(--text-mute);
+  }
+  .compare-col.us li::before {
+    content: ""; position: absolute; left: 0; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--terra);
+    box-shadow: 0 0 0 4px color-mix(in oklch, var(--terra) 15%, transparent);
+  }
+  .compare-col.us li {
+    color: var(--terra-900); font-weight: 500;
+  }
+  .compare-col.us li:hover { transform: translateX(4px); }
+  .compare-footer {
+    margin-top: clamp(40px, 6vh, 56px);
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    color: var(--terra);
+    font-size: clamp(28px, 3vw, 40px);
+    line-height: 1.1;
+  }
+  .compare-footer cite {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--font-body); font-style: normal;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-mute); font-weight: 600;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     MODULES — horizontal scroll on mobile, grid on desktop
+     ════════════════════════════════════════════════════════════ */
+  .modules-wrap { position: relative; }
+  .modules {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 28px);
+  }
+  @media (max-width: 880px) {
+    .modules {
+      grid-template-columns: repeat(9, 80%);
+      grid-auto-flow: column;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 4px 4px 24px;
+      margin: -4px -4px 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .modules::-webkit-scrollbar { display: none; }
+    .module { scroll-snap-align: start; }
+  }
+
+  .module {
+    position: relative;
+    padding: 32px 28px 28px;
+    background: var(--paper);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-xl);
+    display: flex; flex-direction: column; gap: 14px;
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    overflow: hidden;
+  }
+  .module::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--terra-200), var(--terra));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform var(--dur) var(--ease);
+  }
+  .module:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+    border-color: var(--terra-100);
+  }
+  .module:hover::after { transform: scaleX(1); }
+  .module-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .module-num {
+    font-family: var(--font-display); font-style: italic;
+    color: var(--terra);
+    font-size: 24px; font-weight: 500;
+    line-height: 1;
+  }
+  .module-videos {
+    font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-mute); font-weight: 600;
+  }
+  .module-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--terra-50);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--terra-700); margin-bottom: 6px;
+    transition: background var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .module:hover .module-icon {
+    background: var(--terra-100);
+    transform: scale(1.08) rotate(-4deg);
+  }
+  .module h3 {
+    margin: 0; font-family: var(--font-display);
+    font-weight: 500; font-size: 22px; line-height: 1.2; letter-spacing: -.005em;
+    color: var(--ink);
+  }
+  .module p {
+    margin: 0; font-size: 14px; color: var(--text-soft); line-height: 1.55;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     QUOTE BLOCK
+     ════════════════════════════════════════════════════════════ */
+  .quote-block {
+    position: relative;
+    padding: clamp(60px, 9vh, 100px) clamp(40px, 6vw, 80px);
+    background: linear-gradient(135deg, var(--terra-50), var(--cream));
+    border-radius: var(--r-2xl);
+    overflow: hidden;
+  }
+  .quote-block::before {
+    content: "“";
+    position: absolute; top: -60px; left: 24px;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 320px; color: color-mix(in oklch, var(--terra) 22%, transparent);
+    line-height: 1; pointer-events: none;
+    transition: transform var(--dur-slow) var(--ease);
+  }
+  .quote-block:hover::before { transform: translate(8px, 8px) rotate(-2deg); }
+  .quote-block blockquote {
+    position: relative;
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(24px, 3vw, 40px);
+    line-height: 1.25;
+    color: var(--bark);
+    max-width: 30ch;
+    text-wrap: balance;
+  }
+  .quote-block cite {
+    display: block; margin-top: 28px;
+    font-family: var(--font-body); font-style: normal;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--terra-700); font-weight: 600;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     WAVE INTERLUDE  (animated SVG band)
+     ════════════════════════════════════════════════════════════ */
+  .wave-band {
+    position: relative;
+    height: 80px;
+    margin: clamp(40px, 6vh, 80px) 0;
+    overflow: hidden;
+  }
+  .wave-track {
+    display: flex; height: 100%;
+    animation: wave-drift 24s linear infinite;
+    width: 200%;
+  }
+  .wave-track svg { width: 50%; height: 100%; flex-shrink: 0; }
+  .wave-track path { stroke: var(--terra); stroke-width: 1.5; fill: none; opacity: .25; }
+
+  /* ════════════════════════════════════════════════════════════
+     FOR-WHOM   (do/don't with grid)
+     ════════════════════════════════════════════════════════════ */
+  .vt {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+  @media (max-width: 760px) { .vt { grid-template-columns: 1fr; } }
+  .vt > div {
+    padding: clamp(28px, 4vw, 40px);
+    background: var(--paper);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-xl);
+  }
+  .vt .yes { border-left: 3px solid var(--terra); }
+  .vt .no  { border-left: 3px solid var(--bark); opacity: .9; }
+  .vt h5 {
+    margin: 0 0 24px;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .vt .yes h5 { color: var(--terra); }
+  .vt .no  h5 { color: var(--bark); }
+  .vt ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .vt li { padding-left: 30px; position: relative; line-height: 1.5; color: var(--text); }
+  .vt .yes li::before, .vt .no li::before {
+    position: absolute; left: 0; top: 2px;
+    width: 20px; height: 20px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+  .vt .yes li::before {
+    content: "✓";
+    background: var(--terra); color: var(--paper);
+  }
+  .vt .no li::before {
+    content: "·";
+    background: transparent; color: var(--bark);
+    border: 1.5px solid var(--bark);
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     EARLY-BIRD / PRICING
+     ════════════════════════════════════════════════════════════ */
+  .pricing {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--r-2xl);
+    padding: clamp(40px, 6vw, 72px);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: clamp(40px, 5vw, 64px);
+    align-items: stretch;
+  }
+  @media (max-width: 880px) { .pricing { grid-template-columns: 1fr; } }
+  .pricing::before {
+    content: "";
+    position: absolute; top: -200px; right: -200px;
+    width: 540px; height: 540px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--terra-400), transparent 65%);
+    opacity: .55; pointer-events: none;
+    transition: transform var(--dur-slow) var(--ease);
+  }
+  .pricing:hover::before { transform: rotate(20deg) scale(1.05); }
+
+  .pricing-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: var(--r-pill);
+    background: var(--terra); color: var(--paper);
+    font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .pricing-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--paper); animation: pulse-soft 2s ease-in-out infinite;
+  }
+  .pricing h3 {
+    margin: 0 0 24px;
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.1; letter-spacing: -.015em;
+    text-wrap: balance;
+  }
+  .pricing h3 em { font-style: italic; color: var(--terra-200); }
+  .pricing > div > p {
+    color: color-mix(in oklch, var(--linen) 80%, transparent);
+    margin: 0 0 36px; max-width: 44ch;
+  }
+
+  .price-row {
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px;
+    margin-bottom: 36px;
+    padding: 24px 0;
+    border-top: .5px solid color-mix(in oklch, var(--paper) 18%, transparent);
+    border-bottom: .5px solid color-mix(in oklch, var(--paper) 18%, transparent);
+  }
+  .price-main {
+    display: flex; align-items: baseline; gap: 4px;
+  }
+  .price-main .amount {
+    font-family: var(--font-display); font-size: clamp(48px, 6vw, 72px); line-height: .9;
+    font-weight: 500; letter-spacing: -.02em; color: var(--paper);
+  }
+  .price-main .currency {
+    font-size: 24px; color: color-mix(in oklch, var(--linen) 80%, transparent);
+    font-weight: 400;
+  }
+  .price-meta {
+    display: flex; flex-direction: column; gap: 2px;
+    font-size: 12px; color: color-mix(in oklch, var(--linen) 60%, transparent);
+    letter-spacing: .04em;
+  }
+  .price-meta strong { color: var(--terra-200); font-weight: 600; }
+
+  .price-or {
+    align-self: center;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: color-mix(in oklch, var(--linen) 50%, transparent);
+    font-weight: 600;
+    padding: 0 8px;
+  }
+  .price-alt {
+    display: flex; align-items: baseline; gap: 4px;
+  }
+  .price-alt .rate {
+    font-family: var(--font-display); font-size: clamp(28px, 3.5vw, 38px);
+    line-height: .9; font-weight: 500; color: var(--paper); letter-spacing: -.01em;
+  }
+
+  .pricing-cta {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .pricing-cta .btn-handwrite {
+    background: var(--paper); color: var(--terra-900);
+  }
+  .pricing-cta .btn-handwrite:hover {
+    background: var(--terra-50);
+  }
+  .pricing-cta .small {
+    font-size: 13px;
+    color: color-mix(in oklch, var(--linen) 60%, transparent);
+  }
+
+  .bonus-box {
+    padding: 32px;
+    background: color-mix(in oklch, var(--paper) 6%, transparent);
+    border: .5px solid color-mix(in oklch, var(--paper) 16%, transparent);
+    border-radius: var(--r-xl);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    display: flex; flex-direction: column; gap: 18px;
+    z-index: 1; position: relative;
+  }
+  .bonus-box h4 {
+    margin: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 32px; line-height: 1; color: var(--terra-200); font-weight: 600;
+  }
+  .bonus-list {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 14px;
+  }
+  .bonus-list li {
+    padding-left: 28px; position: relative;
+    font-size: 14px; line-height: 1.5;
+    color: color-mix(in oklch, var(--linen) 92%, transparent);
+  }
+  .bonus-list li::before {
+    content: "♡"; position: absolute; left: 0; top: 0;
+    color: var(--terra-200); font-size: 16px;
+  }
+  .bonus-list li b { color: var(--paper); font-weight: 600; }
+  .bonus-foot {
+    padding-top: 16px;
+    border-top: .5px dashed color-mix(in oklch, var(--paper) 18%, transparent);
+    font-size: 12px;
+    color: color-mix(in oklch, var(--linen) 70%, transparent);
+    letter-spacing: .04em;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     STIMMEN
+     ════════════════════════════════════════════════════════════ */
+  .testimonials {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+  @media (max-width: 880px) { .testimonials { grid-template-columns: 1fr; } }
+  .testi {
+    padding: 32px;
+    background: var(--surface);
+    border: .5px solid var(--line-soft);
+    border-radius: var(--r-xl);
+    display: flex; flex-direction: column; gap: 16px;
+    transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  }
+  .testi:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+  .testi .stars {
+    color: var(--terra); letter-spacing: 4px; font-size: 16px;
+  }
+  .testi blockquote {
+    margin: 0; font-family: var(--font-display); font-style: italic;
+    font-size: 17px; line-height: 1.5; color: var(--bark);
+  }
+  .testi .who {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--text-mute);
+    margin-top: auto;
+  }
+  .testi .who-mark {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--terra-200), var(--terra-400));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--paper); font-weight: 600; font-size: 14px;
+    font-family: var(--font-display);
+  }
+  .testi .who b { color: var(--ink); display: block; font-weight: 600; }
+
+  /* ════════════════════════════════════════════════════════════
+     FAQ
+     ════════════════════════════════════════════════════════════ */
+  .faq {
+    display: grid; gap: 12px;
+    max-width: 880px; margin: 0 auto;
+  }
+  .faq details {
+    padding: 24px 28px;
+    background: var(--paper);
+    border: .5px solid var(--line);
+    border-radius: var(--r-lg);
+    transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+  }
+  .faq details:hover { border-color: var(--terra-100); }
+  .faq details[open] {
+    border-color: var(--terra-100);
+    background: var(--terra-50);
+  }
+  .faq summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 19px; font-weight: 500;
+    color: var(--ink);
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+";
+    flex-shrink: 0;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--terra-50);
+    color: var(--terra-700);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 400;
+    transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .faq details[open] summary::after {
+    transform: rotate(45deg);
+    background: var(--terra);
+    color: var(--paper);
+  }
+  .faq .answer {
+    margin-top: 16px; padding-top: 16px;
+    border-top: .5px dashed var(--line-soft);
+    color: var(--text-soft); line-height: 1.6;
+    overflow: hidden;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     FINAL CTA
+     ════════════════════════════════════════════════════════════ */
+  .final-cta {
+    text-align: center;
+    padding: clamp(60px, 9vh, 100px) clamp(32px, 5vw, 64px);
+    background: linear-gradient(135deg, var(--terra-50), var(--cream));
+    border-radius: var(--r-2xl);
+    border: .5px solid var(--terra-100);
+    display: flex; flex-direction: column; align-items: center; gap: 32px;
+  }
+  .final-cta .pic {
+    width: 140px; height: 140px; border-radius: 50%;
+    background:
+      repeating-linear-gradient(45deg, transparent 0 10px, rgba(0,0,0,.04) 10px 11px),
+      linear-gradient(180deg, var(--linen), var(--sand));
+    border: 1px dashed var(--bark);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--bark); padding: 12px;
+  }
+  .final-cta .pic svg { width: 28px; height: 28px; opacity: .7; margin-bottom: 4px; }
+  .final-cta .pic .lbl {
+    font-size: 9px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;
+  }
+  .final-cta h3 {
+    margin: 0;
+    font-family: var(--font-display); font-weight: 400;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.1; letter-spacing: -.015em;
+    text-wrap: balance; max-width: 22ch;
+  }
+  .final-cta h3 em { font-style: italic; color: var(--terra); }
+  .final-cta .note {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(20px, 2.4vw, 28px);
+    line-height: 1.4;
+    color: var(--bark);
+    max-width: 32ch;
+    font-weight: 500;
+  }
+  .final-cta .note .sig {
+    display: block; margin-top: 12px;
+    font-family: var(--font-body); font-style: normal;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-mute); font-weight: 600;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════════ */
+  .footer {
+    background: var(--ink);
+    color: var(--linen);
+    padding: clamp(48px, 7vh, 72px) 0 clamp(32px, 5vh, 48px);
+    margin-top: clamp(60px, 8vh, 100px);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: clamp(32px, 4vw, 56px);
+    margin-bottom: 40px;
+  }
+  @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer-brand {
+    font-family: 'Caveat', cursive;
+    font-size: 36px; line-height: 1;
+    color: var(--terra-200);
+    margin-bottom: 12px;
+  }
+  .footer h5 {
+    margin: 0 0 16px;
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: color-mix(in oklch, var(--linen) 70%, transparent);
+    font-weight: 600;
+  }
+  .footer a {
+    display: block; padding: 6px 0;
+    color: var(--linen); opacity: .85;
+    font-size: 14px;
+    transition: color var(--dur-fast) var(--ease), opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+  }
+  .footer a:hover {
+    opacity: 1;
+    color: var(--terra-200);
+    transform: translateX(4px);
+  }
+  .footer-legal {
+    padding-top: 28px;
+    border-top: .5px solid color-mix(in oklch, var(--paper) 16%, transparent);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    font-size: 12px;
+    color: color-mix(in oklch, var(--linen) 65%, transparent);
+  }
+  .footer-legal a {
+    display: inline-block; padding: 0 12px 0 0;
+  }
+
+  /* ════════════════════════════════════════════════════════════
+     STICKY MOBILE CTA
+     ════════════════════════════════════════════════════════════ */
+  .sticky-cta {
+    position: fixed; bottom: 16px; left: 16px; right: 16px;
+    z-index: 40;
+    padding: 14px 20px;
+    background: var(--ink); color: var(--paper);
+    border-radius: var(--r-pill);
+    display: none; align-items: center; justify-content: space-between;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(120%);
+    transition: transform var(--dur) var(--ease);
+  }
+  .sticky-cta.is-visible { transform: translateY(0); }
+  .sticky-cta-text {
+    font-size: 13px; line-height: 1.3;
+  }
+  .sticky-cta-text b { display: block; font-size: 14px; }
+  .sticky-cta-btn {
+    padding: 10px 16px; border-radius: var(--r-pill);
+    background: var(--terra); color: var(--paper);
+    font-size: 13px; font-weight: 600; white-space: nowrap;
+  }
+  @media (max-width: 760px) {
+    .sticky-cta { display: flex; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ═══════════ TOPBAR ═══════════ -->
+<header class="topbar" id="topbar">
+  <div class="shell topbar-inner">
+    <a href="#hero" class="brand">
+      <div class="mark"></div>
+      <div class="brand-name">moni <em>goes</em> wild</div>
+    </a>
+    <a href="#earlybird" class="topbar-cta">
+      <span>Ich will dabei sein</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero">
+  <div class="shell">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow"><span class="dot"></span>22 Videos · gechannelt durch meine Tiere</span>
+        <h1 class="hero-headline" data-hl="A">
+          <span>Du musst keine Angst</span>
+          <span><em>besiegen.</em></span>
+        </h1>
+        <p class="hero-lede" data-hl="A">
+          Du musst Sicherheit in dir finden. Dann verliert die Angst ihre Macht — von ganz allein. 22 Videos, die alles beerdigen, was du bisher über „durch die Angst durch" gehört hast.
+        </p>
+        <div class="hero-cta-row">
+          <a class="btn btn-handwrite" href="#earlybird">
+            Ich bin dabei :)
+            <span class="arrow">→</span>
+          </a>
+          <span class="hero-meta hero-eb"><span class="eb-dot"></span><b>Early-Bird-Phase aktiv</b> · Bonus: gedrucktes Arbeitsbuch</span>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="stamp">Hi&nbsp;:)</div>
+        <div style="aspect-ratio: 4/5; border-radius: var(--r-lg); border: 1px dashed var(--bark); background: repeating-linear-gradient(45deg, transparent 0 14px, rgba(0,0,0,.04) 14px 15px), linear-gradient(180deg, var(--linen), var(--sand)); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--bark); padding: 20px; text-align: center; gap: 8px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:.65"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+          <span style="font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600;">Bild · Ramona &amp; Mila</span>
+          <span style="font-family: ui-monospace, monospace; font-size: 10px; opacity: .6;">candid · 4:5</span>
+        </div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.55; color: var(--text-soft);">
+          Ich hab kein Skript geschrieben. Mila, Hermine, Ravi, Kerone und Tari haben — und durch sie wirst du Stück für Stück verstehen, warum dieser Kurs anders ist.
+        </p>
+      </aside>
+    </div>
+
+    <p class="hero-quote" data-anim="fade-up">
+      „Ich brauch 'n Angstkurs, ganz dringend, weil ich keine Lust mehr hab, mich von meiner Angst kleinhalten zu lassen."
+      <cite>— Ramona, Video 1</cite>
+    </p>
+  </div>
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <svg width="14" height="20" viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v18m-6-6 6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ═══════════ TRUST STRIP ═══════════ -->
+<section class="trust-strip" data-anim="fade-up">
+  <div class="shell">
+    <div class="trust-track">
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        <span class="num">22</span> Videos
+      </span>
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+        <span class="num">9</span> Module
+      </span>
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Sofort &amp; unbegrenzt
+      </span>
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg>
+        Arbeitsbuch nach Hause
+      </span>
+      <span class="trust-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-7h6v7"/></svg>
+        Geführte Meditation
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ VIGNETTES ═══════════ -->
+<section class="sec" id="erkenne-dich">
+  <div class="shell">
+    <header class="sec-head" data-anim="fade-up">
+      <div class="sec-divider"></div>
+      <div class="sec-eyebrow">01 — Erkenn dich</div>
+      <h2 class="sec-title">Wenn du eines dieser Gefühle kennst, bist du <em>hier richtig.</em></h2>
+      <p class="sec-desc">Drei kleine Szenen. Wenn du dich in nur einer davon erkennst, hast du keine Angst — du hast eine Tür, die du noch nicht geöffnet hast.</p>
+    </header>
+
+    <div class="vignettes" data-stagger>
+      <article class="vignette" data-num="i.">
+        <p>Du wolltest schon dreimal anrufen. Dreimal hat dein Daumen die Nummer gewählt. Dreimal hast du wieder aufgelegt — und es dir selbst nicht erklärt.</p>
+      </article>
+      <article class="vignette" data-num="ii.">
+        <p>„Ich mach das nächste Woche." Du sagst dir das seit drei Monaten. Inzwischen weißt du, dass nächste Woche nicht kommt — aber du sagst es trotzdem.</p>
+      </article>
+      <article class="vignette" data-num="iii.">
+        <p>Du stehst vor dem, was du eigentlich willst. Eintritt bezahlt. Plan gemacht. Und du fühlst nur: heute nicht. Und dann verurteilst du dich dafür.</p>
+      </article>
+    </div>
+
+    <p class="vignettes-closer" data-anim="fade-up">
+      Wenn du dich in einer dieser Szenen erkennst, hast du keine Angst. Du hast eine Tür, die du noch nicht geöffnet hast.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ MINDSHIFT COMPARE ═══════════ -->
+<section class="sec" id="mindshift" style="background: var(--cream);">
+  <div class="shell">
+    <header class="sec-head" data-anim="fade-up">
+      <div class="sec-divider"></div>
+      <div class="sec-eyebrow">02 — Der Mindshift</div>
+      <h2 class="sec-title">Was diesen Kurs <em>anders macht.</em></h2>
+      <p class="sec-desc">Die meisten Angstkurse predigen „mehr Mut, härter dagegen." Dieser Kurs sagt etwas anderes — und zwar zweimal so leise, weil's stimmt.</p>
+    </header>
+
+    <div class="compare" data-anim="zoom">
+      <div class="compare-col them">
+        <h4>Andere Kurse sagen</h4>
+        <ul class="compare-list">
+          <li>Du musst durch die Angst durch.</li>
+          <li>Sei mutiger. Kämpfe härter. Spring rein.</li>
+          <li>Bekämpfe deine Glaubenssätze.</li>
+          <li>Werde angstfrei — irgendwann.</li>
+        </ul>
+      </div>
+      <div class="compare-col us">
+        <h4>Dieser Kurs sagt</h4>
+        <ul class="compare-list">
+          <li>Manchmal ist „nein" das Mutigste.</li>
+          <li>Sicherheit findest du in dir, nicht durch Bekämpfen.</li>
+          <li>Dein Bauchgefühl ist mutiger als jede Affirmation.</li>
+          <li>Du bist schon. Du musst dich nur dafür entscheiden.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="compare-footer" data-anim="fade-up">
+      Don't feed the fears.
+      <cite>Kerone · Video 13</cite>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ WAVE INTERLUDE ═══════════ -->
+<div class="wave-band" aria-hidden="true">
+  <div class="wave-track">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,40 Q150,10 300,40 T600,40 T900,40 T1200,40"/>
+      <path d="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50" style="opacity:.5"/>
+    </svg>
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,40 Q150,10 300,40 T600,40 T900,40 T1200,40"/>
+      <path d="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50" style="opacity:.5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ═══════════ MODULES ═══════════ -->
+<section class="sec" id="module">
+  <div class="shell">
+    <header class="sec-head" data-anim="fade-up">
+      <div class="sec-divider"></div>
+      <div class="sec-eyebrow">03 — Was drin ist</div>
+      <h2 class="sec-title">Neun Module. <em>Zweiundzwanzig Videos.</em></h2>
+      <p class="sec-desc">Mila, Hermine, Tari, Kerone und Ravi haben durch mich gesprochen. Mila ist mitten in den Aufnahmen über die Brücke gegangen — die letzten Module hat sie aus dem Jenseits gechannelt. Jedes Modul ist ein anderer Tag, ein anderer Tier-Lehrer, ein anderes Stück Wahrheit.</p>
+    </header>
+
+    <div class="modules" data-stagger>
+      <article class="module">
+        <div class="module-top">
+          <span class="module-num">i.</span>
+          <span class="module-videos">3 Videos</span>
+        </div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12a9 9 0 0118 0M12 3a14 14 0 010 18"/></svg></div>
+        <h3>Was Angst wirklich ist</h3>
+        <p>Du erkennst, dass Angst nicht zu dir gehört. Sie hängt an dir wie ein USB-Stick mit Virus — und du lernst, wie du ihn rausziehst.</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">ii.</span><span class="module-videos">4 Videos</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div>
+        <h3>Der Mut-Mythos</h3>
+        <p>Du verstehst, warum manche Ängste die Energie nicht wert sind — und wann „fuck it" der einzig richtige Weg ist.</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">iii.</span><span class="module-videos">4 Videos</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Im Jetzt sein</h3>
+        <p>„Grade jetzt ist doch alles in Ordnung." Du machst diesen einen Satz zu deinem Anker — und ziehst Vergangenheit nicht mehr in dein Heute.</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">iv.</span><span class="module-videos">2 Videos</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V8l7-5 7 5v13M9 21v-7h6v7"/></svg></div>
+        <h3>Werkzeuge für den Alltag</h3>
+        <p>Dein eigenes Wunderkerzen-Video. Verankerung im Alltag. „Hält's mich lebendig?" — Tools, die du sofort anwendest.</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">v.</span><span class="module-videos">2 Videos</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14M22 4 12 14.01l-3-3"/></svg></div>
+        <h3>Der Weg ist das Ziel</h3>
+        <p>Du hörst auf zu warten, bis „es endlich klappt". Schon das Hinsehen ist der Weg — auch wenn von außen niemand etwas sieht.</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">vi.</span><span class="module-videos">3 Videos</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2M3 18c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2M3 6c2 0 3-2 5-2s3 2 5 2 3-2 5-2 3 2 5 2"/></svg></div>
+        <h3>Die Welle in dir</h3>
+        <p>Du bist nicht die Welle. Du bist das Meer. Wir Frauen sind zyklisch — und genau das ist deine Kraft.</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">vii.</span><span class="module-videos">1 Video</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Deine freie Seele</h3>
+        <p>Mila aus dem Jenseits. Hermine über das Schiff, das du steuerst. Was du heute lernst, wirkt über dieses Leben hinaus.</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">viii.</span><span class="module-videos">2 Videos</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></div>
+        <h3>Tiere als Spiegel</h3>
+        <p>Warum die Tiere an deiner Seite den Leidensdruck hochdrehen — aus bedingungsloser Liebe. „Ich kann nur frei sein, wenn du frei bist." (Kerone)</p>
+      </article>
+      <article class="module">
+        <div class="module-top"><span class="module-num">ix.</span><span class="module-videos">1 Video + Meditation</span></div>
+        <div class="module-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Du bist so weit</h3>
+        <p>Die geführte Meditation, die alles zusammenhält. Du bist gehalten, getragen, geliebt — und nie allein. Das ist der Closer.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ QUOTE BLOCK ═══════════ -->
+<section class="sec" style="padding-top: 0;">
+  <div class="shell">
+    <div class="quote-block" data-anim="blur">
+      <blockquote>
+        Die einzige Entscheidung, die du treffen musst, ist:<br/>Sehe ich mich selbst?
+      </blockquote>
+      <cite>— Tari · Video 6</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FÜR WEN ═══════════ -->
+<section class="sec" id="fuer-wen" style="background: var(--cream);">
+  <div class="shell">
+    <header class="sec-head" data-anim="fade-up">
+      <div class="sec-divider"></div>
+      <div class="sec-eyebrow">04 — Für wen</div>
+      <h2 class="sec-title">Damit kein Missverständnis bleibt — <em>oder Geld umsonst fließt.</em></h2>
+      <p class="sec-desc">Ich filtere lieber zwei Käufer:innen aus, als hundert Enttäuschte mit einem Kurs zu lassen, der nicht für sie gemacht ist.</p>
+    </header>
+
+    <div class="vt">
+      <div class="yes" data-anim="fade-right">
+        <h5>Komm rein, wenn …</h5>
+        <ul>
+          <li>du meine Welt schon kennst und eine Tür weitergehen willst.</li>
+          <li>du müde bist von „härter, schneller, mutiger"-Narrativen.</li>
+          <li>du dich im Zyklus zerrissen fühlst und aufhören willst, dich dafür zu verurteilen.</li>
+          <li>du Werkzeuge willst, die im Alltag funktionieren — nicht nur auf der Yogamatte.</li>
+          <li>du bereit bist, Verantwortung für deine Sonnenblumen zu übernehmen.</li>
+        </ul>
+      </div>
+      <div class="no" data-anim="fade-left">
+        <h5>Lass es lieber, wenn …</h5>
+        <ul>
+          <li>du Therapie suchst — das hier ersetzt keinen Menschen mit Approbation.</li>
+          <li>du eine Anleitung willst „wie ich nie wieder Angst habe". Die gibt's hier nicht.</li>
+          <li>du beschützt werden willst. Das hier macht dich groß, nicht klein.</li>
+          <li>du auf einen Knopf hoffst, der die Arbeit für dich macht.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EARLY-BIRD / PRICING ═══════════ -->
+<section class="sec" id="earlybird">
+  <div class="shell">
+    <header class="sec-head" data-anim="fade-up">
+      <div class="sec-divider"></div>
+      <div class="sec-eyebrow">05 — Sei früh dabei</div>
+      <h2 class="sec-title">Komm in der Early-Bird-Phase — <em>und das Arbeitsbuch kommt zu dir nach Hause.</em></h2>
+      <p class="sec-desc">Jede Early-Bird-Bestellung bekommt das gedruckte Arbeitsbuch postalisch. Plus die geführte Meditation. Plus den vollen Kurszugang. Danach läuft alles digital.</p>
+    </header>
+
+    <div class="pricing" data-anim="fade-up">
+      <div>
+        <span class="pricing-badge"><span class="dot"></span>Early Bird</span>
+        <h3>22 Videos. Arbeitsbuch in deiner Hand. <em>Eine Meditation für leise Tage.</em></h3>
+        <p>Komplettzugang zu allen 22 Videos, sofort und unbegrenzt. Plus die Bonus-Box für alle Early-Birds.</p>
+
+        <div class="price-row">
+          <div class="price-main">
+            <span class="amount" id="ld-price">249</span>
+            <span class="currency">€</span>
+            <span class="price-meta" style="margin-left: 12px;">
+              <strong>Einmalig</strong>
+              <span>sofortiger Zugang</span>
+            </span>
+          </div>
+          <span class="price-or">oder</span>
+          <div class="price-alt">
+            <span class="rate">3 × <span id="ld-rate">97</span> €</span>
+            <span class="price-meta" style="margin-top: 6px;">
+              <strong>Ratenzahlung</strong>
+              <span>nur in Deutschland</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="pricing-cta">
+          <a class="btn btn-handwrite" href="#">
+            Ich bin dabei :)
+            <span class="arrow">→</span>
+          </a>
+          <span class="small">Sicherer Checkout · keine Abos</span>
+        </div>
+      </div>
+
+      <aside class="bonus-box">
+        <h4>Bonus-Box ♡</h4>
+        <ul class="bonus-list">
+          <li><b>Gedrucktes Arbeitsbuch</b> für jede Early-Bird-Bestellung, postalisch zu dir.</li>
+          <li><b>Geführte Meditation</b> „Setz dich wieder auf den Thron" — ca. 15 Min, digital.</li>
+          <li><b>Sofortiger Zugang</b> zu allen Videos und allen Updates.</li>
+        </ul>
+        <div class="bonus-foot">Bonus-Box endet mit der Early-Bird-Phase · danach nur noch digitales Arbeitsbuch</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STIMMEN ═══════════ -->
+<section class="sec" id="stimmen" style="background: var(--cream);">
+  <div class="shell">
+    <header class="sec-head" data-anim="fade-up">
+      <div class="sec-divider"></div>
+      <div class="sec-eyebrow">06 — Stimmen</div>
+      <h2 class="sec-title">Was meine Community sagt — <em>für andere Kurse.</em></h2>
+      <p class="sec-desc">Diese Stimmen kommen aus meiner Tierkommunikations-Welt. Echte Angstkurs-Stimmen folgen, sobald die ersten durch sind.</p>
+    </header>
+
+    <div class="testimonials" data-stagger>
+      <article class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>Ehrlich, das war nicht mein erster Kurs in Tierkommunikation. Aber der Erste, der eine unbeschreiblich tiefe Kommunikation öffnete.</blockquote>
+        <div class="who">
+          <div class="who-mark">A</div>
+          <div><b>Anna M.</b>Trustpilot · TK1</div>
+        </div>
+      </article>
+      <article class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>Ramona spricht aus, was ich seit Jahren gespürt habe — ohne dass es esoterisch wird. Die Tiere kommen einfach durch.</blockquote>
+        <div class="who">
+          <div class="who-mark">S</div>
+          <div><b>Sandra K.</b>Trustpilot · Sparkling Destiny</div>
+        </div>
+      </article>
+      <article class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>Ich hab mit den Tieren mehr über mich gelernt als mit drei Therapeut:innen. Und das ist kein Witz.</blockquote>
+        <div class="who">
+          <div class="who-mark">R</div>
+          <div><b>Rebecca S.</b>Trustpilot · Masterclass</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="sec" id="faq">
+  <div class="shell">
+    <header class="sec-head" data-anim="fade-up" style="text-align: center;">
+      <div class="sec-divider" style="margin-left: auto; margin-right: auto;"></div>
+      <div class="sec-eyebrow">07 — Was du noch wissen willst</div>
+      <h2 class="sec-title" style="margin-left: auto; margin-right: auto;">Ehrliche Antworten. <em>Auch die unbequemen.</em></h2>
+      <p class="sec-desc" style="margin-left: auto; margin-right: auto;">Wenn nach dem Lesen noch eine Frage offen ist, schreib mir direkt. Ich beantworte das lieber zweimal, als dass du im Trüben kaufst.</p>
+    </header>
+
+    <div class="faq" data-stagger>
+      <details>
+        <summary>Kann ich auch in Raten zahlen?</summary>
+        <div class="answer">Ja. Du kannst entweder einmalig 249 € zahlen oder in 3 Raten zu je 97 €. Die Ratenzahlung ist aktuell nur für Bestellungen aus Deutschland möglich — aus dem Ausland geht nur die einmalige Zahlung.</div>
+      </details>
+      <details>
+        <summary>Brauche ich Vorerfahrung mit Tierkommunikation?</summary>
+        <div class="answer">Nein. Die Tiere channeln durch mich — du musst nichts dafür können. Wenn du noch nie was bei mir gemacht hast, geht's trotzdem. Wenn du TK1 oder Sparkling Destiny hattest, hörst du die Stimmen wieder.</div>
+      </details>
+      <details>
+        <summary>Was, wenn ich nach dem Kurs immer noch Angst habe?</summary>
+        <div class="answer">Wirst du. Genau das ist die Idee. Wer behauptet, du wirst nach einem Kurs angstfrei, lügt. Hier lernst du, mit der Angst zu leben statt gegen sie. Das ist der Unterschied — und genau der trägt dich weiter.</div>
+      </details>
+      <details>
+        <summary>Wie lang habe ich Zugriff?</summary>
+        <div class="answer">Unbegrenzt. Du kannst die Videos so oft gucken, wie du willst. Updates und neue Inhalte landen automatisch in deinem Bereich.</div>
+      </details>
+      <details>
+        <summary>Geht das auch mit dem Handy?</summary>
+        <div class="answer">Ja. Alle Videos laufen auf jedem Gerät — Handy, Tablet, Laptop. Das Arbeitsbuch gibt's als PDF für alle. Das gedruckte Exemplar bekommt jede Early-Bird-Bestellung postalisch nach Hause.</div>
+      </details>
+      <details>
+        <summary>Was, wenn es nicht das Richtige für mich ist?</summary>
+        <div class="answer">Dann ist es nicht das Richtige. Lies oben „Lass es lieber, wenn ..." nochmal durch. Wenn du dich da erkennst, kauf nicht — ich wäre lieber das, was wir beide nicht haben, als das, was du nicht brauchst.</div>
+      </details>
+      <details>
+        <summary>Wer sind diese Tiere überhaupt?</summary>
+        <div class="answer">Mila war meine leise Hündin — sie ist mitten in den Aufnahmen über die Brücke gegangen. Die letzten Module hat sie aus dem Jenseits durch mich gesprochen. Hermine ist eine Henne mit Welt-Ansage. Ravi (offiziell Ravion), Kerone und Amiro sind meine Pferde. Tari ist die Henne mit Queen Energy — ich nenne sie liebevoll Tari-Maus. Kasimir ist mein Akasha-Hüter. Sie sind die eigentlichen Lehrer dieses Kurses.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="sec" id="schluss">
+  <div class="shell">
+    <div class="final-cta" data-anim="fade-up">
+      <div class="pic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
+        <span class="lbl">Portrait · Ramona</span>
+      </div>
+      <h3>Wenn das hier was in dir berührt hat, <em>komm mit.</em></h3>
+      <p class="note">
+        Ich hab kein Skript geschrieben.<br/>Die Tiere haben.<br/>Ich freu mich auf dich.
+        <span class="sig">— Ramona</span>
+      </p>
+      <a class="btn btn-handwrite" href="#earlybird">
+        Ich bin dabei :)
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">moni goes wild ♡</div>
+        <p style="opacity: .75; margin: 0; max-width: 32ch; font-size: 14px; line-height: 1.6;">Aus Liebe zu Tieren — und zu dir selbst. Tierkommunikation, Wildtierillustrationen, Persönlichkeitsentwicklung.</p>
+      </div>
+      <div>
+        <h5>Mehr</h5>
+        <a href="https://monigoeswild.de/home">Tierkommunikation</a>
+        <a href="https://monigoeswild.de/store">Shop</a>
+        <a href="https://monigoeswild.de/kontakt">Kontakt</a>
+      </div>
+      <div>
+        <h5>Kurse</h5>
+        <a href="#">Starterkurs (TK1)</a>
+        <a href="#">Sparkling Destiny</a>
+        <a href="#">Angstkurs</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>© 2026 moni.goes.wild · Ramona Hoffmann</span>
+      <span>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ STICKY MOBILE CTA ═══════════ -->
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-text">
+    <b>Early-Bird läuft</b>
+    <span>Bonus: gedrucktes Arbeitsbuch</span>
+  </div>
+  <a href="#earlybird" class="sticky-cta-btn">Dabei sein</a>
+</div>
+
+<!-- Tweaks Panel React mount -->
+<div id="tweaks-root"></div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script>
+/* ═══════════ Scroll progress ═══════════ */
+(function() {
+  const bar = document.getElementById('scrollProgress');
+  const topbar = document.getElementById('topbar');
+  const sticky = document.getElementById('stickyCta');
+  if (!bar) return;
+  function onScroll() {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+    bar.style.transform = `scaleX(${scrolled})`;
+    topbar.classList.toggle('is-scrolled', h.scrollTop > 40);
+    if (sticky) {
+      sticky.classList.toggle('is-visible', h.scrollTop > 600 && scrolled < 0.92);
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ═══════════ Intersection Observer for animations ═══════════ */
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-anim], [data-stagger]').forEach(el => el.classList.add('is-in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('[data-anim], [data-stagger]').forEach(el => io.observe(el));
+})();
+</script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "typeDirection": "classic",
+  "primary": "#bf6b4d",
+  "surface": "#f7f3ec",
+  "ink": "#2a241d",
+  "headline": "A",
+  "price": 249,
+  "ratePrice": 97
+}/*EDITMODE-END*/;
+
+const TYPO_DIRECTIONS = {
+  default:   { label: "Fraunces · DM Sans · Caveat",        display: "'Fraunces', Georgia, serif",            body: "'DM Sans', system-ui, sans-serif",  script: "'Caveat', cursive" },
+  editorial: { label: "Cormorant · Work Sans · Reenie",     display: "'Cormorant Garamond', Georgia, serif",  body: "'Work Sans', system-ui, sans-serif", script: "'Reenie Beanie', cursive" },
+  classic:   { label: "Libre Caslon · Inter · Homemade",    display: "'Libre Caslon Text', Georgia, serif",   body: "'Inter', system-ui, sans-serif",     script: "'Homemade Apple', cursive" },
+};
+
+const HEADLINES = {
+  A: { lines: ['Du musst keine Angst', '<em>besiegen.</em>'],                       lede: 'Du musst Sicherheit in dir finden. Dann verliert die Angst ihre Macht — von ganz allein. 22 Videos, die alles beerdigen, was du bisher über „durch die Angst durch" gehört hast.' },
+  B: { lines: ['Wenn dein Tier sich versteckt,', 'sucht es etwas, <em>das wir noch nicht hören.</em>'], lede: 'Du auch. 22 Videos, gechannelt durch Mila, Hermine, Tari, Kerone und Ravi — gegen jedes „durch-die-Angst-durch"-Narrativ, das du je gehört hast.' },
+  C: { lines: ['Du bist.', '<em>Punkt.</em>'],                                        lede: 'Alles, was nach „ich bin" kommt, ist Hinzugefügtes vom Ego. Mila, Hermine und Kerone erzählen dir in 22 Videos, was passiert, wenn du den Punkt setzt.' },
+};
+
+function App() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    const r = document.documentElement;
+    const dir = TYPO_DIRECTIONS[t.typeDirection] || TYPO_DIRECTIONS.classic;
+    r.style.setProperty('--font-display', dir.display);
+    r.style.setProperty('--font-body',    dir.body);
+    r.style.setProperty('--font-script',  dir.script);
+    r.style.setProperty('--terra',   t.primary);
+    r.style.setProperty('--surface', t.surface);
+    r.style.setProperty('--cream',   t.surface);
+    r.style.setProperty('--ink',     t.ink);
+    r.style.setProperty('--text',    t.ink);
+  }, [t.typeDirection, t.primary, t.surface, t.ink]);
+
+  React.useEffect(() => {
+    const h = HEADLINES[t.headline] || HEADLINES.A;
+    document.querySelectorAll('.hero-headline[data-hl]').forEach(el => {
+      el.innerHTML = h.lines.map(line => `<span>${line}</span>`).join('');
+    });
+    document.querySelectorAll('.hero-lede[data-hl]').forEach(el => { el.textContent = h.lede; });
+  }, [t.headline]);
+
+  React.useEffect(() => { document.querySelectorAll('#ld-price').forEach(el => { el.textContent = String(t.price); }); }, [t.price]);
+  React.useEffect(() => { document.querySelectorAll('#ld-rate').forEach(el  => { el.textContent = String(t.ratePrice); }); }, [t.ratePrice]);
+
+  return (
+    <TweaksPanel title="LP-Tweaks">
+      <TweakSection label="Headline" />
+      <TweakRadio label="Variante" value={t.headline}
+        options={[{ value: 'A', label: 'A · Sicherheit' }, { value: 'B', label: 'B · Tier-Hook' }, { value: 'C', label: 'C · Du bist.' }]}
+        onChange={(v) => setTweak('headline', v)} />
+
+      <TweakSection label="Preis" />
+      <TweakNumber label="Einmalig"    value={t.price}     min={49}  max={997} step={10} unit="€" onChange={(v) => setTweak('price', v)} />
+      <TweakNumber label="Rate (3×)"  value={t.ratePrice} min={29}  max={399} step={2}  unit="€" onChange={(v) => setTweak('ratePrice', v)} />
+
+      <TweakSection label="Typografie" />
+      <TweakRadio label="Stack" value={t.typeDirection}
+        options={[{ value: 'default', label: 'Default' }, { value: 'editorial', label: 'Editorial' }, { value: 'classic', label: 'Classic' }]}
+        onChange={(v) => setTweak('typeDirection', v)} />
+      <div className="twk-row">
+        <div className="twk-lbl"><span style={{ fontSize: 10, opacity: .7 }}>{TYPO_DIRECTIONS[t.typeDirection].label}</span></div>
+      </div>
+
+      <TweakSection label="Farben" />
+      <TweakColor label="Primär (Terra)"  value={t.primary} onChange={(v) => setTweak('primary', v)} />
+      <TweakColor label="Surface (Creme)" value={t.surface} onChange={(v) => setTweak('surface', v)} />
+      <TweakColor label="Ink (Text)"      value={t.ink}     onChange={(v) => setTweak('ink', v)} />
+
+      <TweakSection label="Reset" />
+      <TweakButton label="Default wiederherstellen" secondary
+        onClick={() => setTweak({ typeDirection: 'classic', primary: '#bf6b4d', surface: '#f7f3ec', ink: '#2a241d', headline: 'A', price: 249, ratePrice: 97 })} />
+    </TweaksPanel>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+</script>
+
+</body>
+</html>
