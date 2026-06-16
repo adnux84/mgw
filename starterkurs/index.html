@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gratis-Einstieg in die Tierkommunikation — moni.goes.wild</title>
+<meta name="description" content="Hol dir den kostenlosen Einstieg in die Tierkommunikation: das erste Video plus die Meditation „Insel der Lebendigkeit". Du musst nicht begabt sein — du musst nur einmal anfangen." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Du musst nicht „begabt" sein, um mit deinem Tier zu reden." />
+<meta property="og:description" content="Hol dir den kostenlosen Einstieg: das erste Video + die „Insel der Lebendigkeit"-Meditation." />
+<meta property="og:image" content="{{OG_IMAGE_URL}}" />
+<meta property="og:locale" content="de_DE" />
+
+<!-- Favicon-Platzhalter -->
+<link rel="icon" href="{{FAVICON_URL}}" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Open+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* ── Brand-Tokens — moni.goes.wild (echte Marke, monigoeswild.de) ──
+       Adnan: hier echte Hex-Werte eintauschen. Pflicht-Tokens lt. Brief markiert. */
+    --bg:           #ffffff;   /* Brief-Token · warmes Weiß */
+    --bg-warm:      #f4ebe3;   /* warmes Sand-Band · klare Sektions-Abhebung */
+    --footer:       #3c2e27;   /* warmes Espresso (statt Grau) */
+    --surface:      #faf3ee;   /* Karten (rosé-getönt) */
+    --text:         #33302e;   /* Brief-Token · Body, hoher Kontrast */
+    --text-soft:    #5f5853;
+    --text-mute:    #8c837c;
+
+    --accent:       #8f6e60;   /* Brief-Token · Mokka, Markenakzent */
+    --accent-soft:  #efe0d8;   /* Brief-Token · zartes Rosé für Flächen */
+    --accent-deep:  #6f5247;   /* tieferes Mokka · Text auf Weiß (AA-konform) */
+    --rose:         #b79485;   /* Rosé · NUR dekorativ, nie als Fließtext */
+    --slate:        #4a5464;   /* Sekundär */
+
+    --cta:          #6f5247;   /* Brief-Token · Button-Fläche (Weiß-Text ≥4,5:1) */
+    --cta-text:     #ffffff;   /* Brief-Token */
+    --cta-hover:    #5b4239;
+
+    --line:         #ece1da;
+    --line-soft:    #f3eae4;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Open Sans', system-ui, -apple-system, sans-serif;
+    --font-script:  'Caveat', 'Brush Script MT', cursive;
+
+    /* 8pt-Spacing-Rhythmus */
+    --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+    --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 88px;
+
+    --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-pill: 999px;
+    --sh-1: 0 1px 2px rgba(80,55,40,.05);
+    --sh-2: 0 10px 30px rgba(120,85,65,.10), 0 2px 6px rgba(120,85,65,.05);
+    --sh-3: 0 24px 60px rgba(120,85,65,.16), 0 4px 10px rgba(120,85,65,.06);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent-soft); color: var(--accent-deep); }
+
+  .shell { max-width: 660px; margin: 0 auto; padding: 0 22px; }
+
+  /* ── Topbar ────────────────────────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--bg) 84%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .topbar-inner {
+    max-width: 660px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    padding: 14px 22px;
+  }
+  .brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); }
+  .brand .fox { font-size: 22px; line-height: 1; }
+  .brand .name { font-family: var(--font-script); font-size: 27px; line-height: 1; color: var(--text); }
+  .brand .name em { font-style: normal; color: var(--accent); }
+
+  /* ── Buttons ───────────────────────────────────────────── */
+  .btn {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: var(--font-body); font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 16px 30px; border-radius: var(--r-pill);
+    font-size: 16px; line-height: 1; min-height: 52px;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), background .2s ease, box-shadow .2s ease;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--cta); color: var(--cta-text); box-shadow: var(--sh-2); }
+  .btn-primary:hover { background: var(--cta-hover); box-shadow: var(--sh-3); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0) scale(.985); }
+  .btn-primary:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 3px; }
+  .btn-block { width: 100%; }
+  .btn-lg { padding: 18px 34px; font-size: 17px; min-height: 58px; }
+  .btn[aria-busy="true"] { opacity: .75; pointer-events: none; }
+
+  /* ── Organic background blobs (dezent, statisch) ───────── */
+  .bg-art { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5; }
+  .blob.b1 { width: 340px; height: 340px; top: -120px; right: -120px; background: var(--accent-soft); }
+  .blob.b2 { width: 300px; height: 300px; top: 220px; left: -160px; background: #f1e7e1; opacity: .7; }
+
+  /* ── Hero ──────────────────────────────────────────────── */
+  .hero { position: relative; padding: var(--s-8) 0 var(--s-7); text-align: center; }
+  .hero > * { position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent-deep); font-weight: 700; margin-bottom: var(--s-5);
+  }
+  .eyebrow::before, .eyebrow::after { content: ""; width: 22px; height: 1px; background: var(--rose); opacity: .7; }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(33px, 5.6vw, 46px);
+    line-height: 1.12; letter-spacing: -.01em;
+    margin: 0 auto var(--s-5); max-width: 600px;
+    color: var(--text); text-wrap: balance;
+  }
+  .hero h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+  /* Desktop: zweiter Satz auf eigene Zeile → max. 3 Zeilen */
+  @media (min-width: 720px) {
+    .hero h1 { max-width: 600px; text-wrap: normal; }
+    .hero h1 em { display: block; }
+  }
+  .hero .lede {
+    font-size: 19px; color: var(--text-soft);
+    max-width: 48ch; margin: 0 auto var(--s-6); text-wrap: pretty;
+  }
+
+  /* ── Foto-Slot (Ramona & Tier) ─────────────────────────── */
+  .hero-photo {
+    width: 132px; height: 132px; border-radius: 50%; margin: 0 auto var(--s-6);
+    background:
+      radial-gradient(circle at 30% 28%, #fff 0 8%, transparent 8%),
+      linear-gradient(160deg, var(--accent-soft), #f0e6e0);
+    border: 1px dashed var(--rose);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--accent-deep); text-align: center; padding: 12px;
+    box-shadow: var(--sh-1);
+  }
+  .hero-photo svg { width: 30px; height: 30px; opacity: .75; margin-bottom: 4px; }
+  .hero-photo .lbl { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .8; line-height: 1.3; }
+
+  /* ── Opt-in card ───────────────────────────────────────── */
+  .optin-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: var(--s-6) var(--s-5);
+    max-width: 460px; margin: 0 auto;
+    box-shadow: var(--sh-2);
+    text-align: left;
+  }
+  .lead-magnet {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bg); border: 1px solid var(--line-soft);
+    border-radius: var(--r-md); padding: 12px 14px; margin-bottom: var(--s-5);
+  }
+  .lead-magnet .lm-ic {
+    width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0;
+    background: var(--accent-soft); color: var(--accent-deep);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lead-magnet .lm-ic svg { width: 21px; height: 21px; }
+  .lead-magnet p { margin: 0; font-size: 13.5px; line-height: 1.45; color: var(--text-soft); }
+  .lead-magnet b { color: var(--text); font-weight: 700; }
+
+  .field { display: grid; gap: 7px; margin-bottom: var(--s-4); }
+  .field label.flbl { font-size: 13px; font-weight: 600; color: var(--text-soft); }
+  .field input[type="email"] {
+    font-family: var(--font-body); font-size: 16px; min-height: 52px;
+    padding: 14px 16px; border: 1px solid var(--line);
+    border-radius: var(--r-md); background: var(--bg); color: var(--text);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .field input[type="email"]::placeholder { color: var(--text-mute); }
+  .field input[type="email"]:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .consent {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 13px; color: var(--text-mute); line-height: 1.5;
+    margin-bottom: var(--s-5);
+  }
+  .consent input { margin-top: 3px; accent-color: var(--accent); width: 17px; height: 17px; flex-shrink: 0; }
+  .consent a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 2px; }
+  .form-foot { margin-top: var(--s-3); text-align: center; font-size: 13px; color: var(--text-mute); }
+  .form-status { margin-top: var(--s-3); text-align: center; font-size: 14px; font-weight: 600; color: var(--accent-deep); min-height: 1px; }
+
+  /* Optionaler sozialer Beweis — nur wenn verifiziert (siehe README) */
+  .social-proof { margin: var(--s-5) auto 0; text-align: center; font-size: 14px; color: var(--text-mute); font-style: italic; }
+
+  /* ── Sektionen ─────────────────────────────────────────── */
+  .sec { padding: var(--s-8) 0; }
+  .sec.warm { background: var(--bg-warm); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+  .sec-eyebrow {
+    text-align: center; font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent-deep); font-weight: 700; margin-bottom: var(--s-6);
+  }
+
+  /* ── Benefits ──────────────────────────────────────────── */
+  .benefits { display: grid; gap: var(--s-4); max-width: 520px; margin: 0 auto; }
+  .benefit {
+    display: flex; gap: var(--s-4); align-items: center;
+    background: var(--bg); border: 1px solid var(--line-soft);
+    border-radius: var(--r-lg); padding: 20px 22px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .benefit:hover { transform: translateY(-2px); box-shadow: var(--sh-2); }
+  .benefit .ic {
+    width: 46px; height: 46px; border-radius: 13px; flex-shrink: 0;
+    background: var(--accent-soft); color: var(--accent-deep);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .benefit .ic svg { width: 24px; height: 24px; }
+  .benefit p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--text); }
+  .benefit p em { font-style: italic; color: var(--accent-deep); font-weight: 600; }
+
+  /* ── Ramona-Stimme ─────────────────────────────────────── */
+  .voice { max-width: 600px; margin: 0 auto; text-align: center; }
+  .voice .q-mark { font-family: var(--font-display); font-size: 64px; line-height: .6; color: var(--rose); opacity: .55; }
+  .voice blockquote {
+    margin: 0; font-family: var(--font-display); font-style: italic; font-weight: 500;
+    font-size: clamp(21px, 3.4vw, 28px); line-height: 1.4; color: var(--text); text-wrap: pretty;
+  }
+  .voice .sign { display: block; margin-top: var(--s-4); font-family: var(--font-script); font-size: 31px; color: var(--accent); font-weight: 600; }
+
+  /* ── CTA-Wiederholung ──────────────────────────────────── */
+  .cta-repeat { text-align: center; }
+  .cta-repeat h2 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(28px, 5vw, 42px); line-height: 1.12; letter-spacing: -.01em;
+    margin: 0 auto var(--s-6); max-width: 18ch; text-wrap: balance; color: var(--text);
+  }
+  .cta-repeat h2 em { font-style: italic; font-weight: 500; color: var(--accent); }
+
+  /* ── Footer ────────────────────────────────────────────── */
+  .footer { background: var(--footer); color: #e9ddd4; padding: var(--s-7) 22px var(--s-6); }
+  .footer-inner { max-width: 660px; margin: 0 auto; text-align: center; display: grid; gap: var(--s-4); }
+  .footer .brand-foot { font-family: var(--font-script); font-size: 30px; color: #fff; }
+  .footer .links { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; }
+  .footer a { color: #e9ddd4; text-decoration: none; opacity: .85; font-size: 14px; }
+  .footer a:hover { opacity: 1; text-decoration: underline; }
+  .footer .copy { font-size: 12px; opacity: .6; }
+
+  /* ── Sticky-CTA (nur Mobile) ───────────────────────────── */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: none; padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 720px) {
+    .sticky-cta { display: flex; }
+    body { padding-bottom: 88px; }
+  }
+
+  /* ── Scroll-Reveal ─────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease-out, transform .5s ease-out; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .benefit { transition: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────── Topbar ───────── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#optin" aria-label="moni goes wild — zum Anfang">
+      <span class="fox" aria-hidden="true">🦊</span>
+      <span class="name">moni <em>goes</em> wild</span>
+    </a>
+  </div>
+</div>
+
+<!-- ───────── Hero / Opt-in ───────── -->
+<header class="hero" id="optin">
+  <div class="bg-art" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="shell">
+    <div class="eyebrow reveal">Gratis-Einstieg in die Tierkommunikation</div>
+
+    <div class="hero-photo reveal" role="img" aria-label="Platzhalter für ein Foto von Ramona mit ihrem Tier">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+      <span class="lbl">Foto · Ramona<br/>{{HERO_IMAGE_URL}}</span>
+    </div>
+
+    <h1 class="reveal">Du musst nicht „begabt" sein, um mit deinem Tier zu reden. <em>Du musst nur einmal anfangen.</em></h1>
+    <p class="lede reveal">Hol dir den kostenlosen Einstieg: das erste Video + die „Insel der Lebendigkeit"-Meditation. Manche hören damit nach 2 Minuten zum ersten Mal etwas von ihrem Tier.</p>
+
+    <div class="optin-card reveal">
+      <div class="lead-magnet">
+        <span class="lm-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="14" height="14" rx="3"/><path d="m16.5 10 5-3v10l-5-3"/></svg>
+        </span>
+        <p><b>Dein Gratis-Einstieg:</b> Video 1 aus dem Starterkurs + die Meditation „Insel der Lebendigkeit" — direkt in dein Postfach.</p>
+      </div>
+
+      <!-- Adnan: action-Endpoint verdrahten (Easy2 / ManyChat / Zapier) -->
+      <form action="{{OPTIN_FORM_ENDPOINT}}" method="post" novalidate>
+        <div class="field">
+          <label class="flbl" for="email">Deine E-Mail</label>
+          <input type="email" id="email" name="email" required autocomplete="email" inputmode="email" placeholder="du@beispiel.de" />
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="consent" required />
+          <span>Ja, schick mir den Gratis-Einstieg und gelegentlich Post von Ramona. Ich kann mich jederzeit wieder abmelden. Mehr in der <a href="{{DATENSCHUTZ_URL}}">Datenschutzerklärung</a>.</span>
+        </label>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Schick mir den Gratis-Einstieg</button>
+        <div class="form-foot">Kostenlos · kein Risiko · jederzeit abbestellbar</div>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <!--
+      OPTIONALER SOZIALER BEWEIS — nur einbauen, wenn die Zahl verifiziert ist (siehe README, Harte Regel 4).
+      Sonst diesen Block gelöscht lassen.
+      <p class="social-proof">Über {{ANZAHL}} Menschen auf der Warteliste</p>
+    -->
+  </div>
+</header>
+
+<!-- ───────── Was du bekommst ───────── -->
+<section class="sec warm">
+  <div class="shell">
+    <div class="sec-eyebrow reveal">Was du bekommst</div>
+    <div class="benefits">
+      <div class="benefit reveal">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="14" height="14" rx="3"/><path d="m16.5 10 5-3v10l-5-3"/></svg>
+        </span>
+        <p>Das erste Video aus dem Starterkurs – entspannt, ehrlich, kein trockener Technik-Kram.</p>
+      </div>
+      <div class="benefit reveal">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8c2.2 0 2.2 2 4.4 2S8.6 8 10.8 8 13 10 15.2 10 17.4 8 19.6 8 22 10 22 10"/><path d="M2 13c2.2 0 2.2 2 4.4 2S8.6 13 10.8 13 13 15 15.2 15 17.4 13 19.6 13 22 15 22 15"/></svg>
+        </span>
+        <p>Die geführte Meditation „Insel der Lebendigkeit" – dein erster echter Kontakt.</p>
+      </div>
+      <div class="benefit reveal">
+        <span class="ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.3a3.9 3.9 0 0 1 7-2.4 3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg>
+        </span>
+        <p>Das Gefühl: <em>Ich kann das wirklich.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Ramona-Stimme ───────── -->
+<section class="sec">
+  <div class="shell">
+    <div class="voice reveal">
+      <div class="q-mark" aria-hidden="true">„</div>
+      <blockquote>Ich glaub, fast jeder kann mit Tieren reden – wir haben's nur verlernt. Du brauchst dafür keinen Kurs und niemanden, auch mich nicht. Aber ich zeig dir gern den Abkürzungsweg. Fang einfach mit dem Gratis-Einstieg an und schau, was passiert. 🦊</blockquote>
+      <span class="sign">— Ramona</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── CTA-Wiederholung ───────── -->
+<section class="sec warm">
+  <div class="shell">
+    <div class="cta-repeat">
+      <h2 class="reveal">Fang einfach an – und <em>schau, was passiert.</em></h2>
+      <a href="#optin" class="btn btn-primary btn-lg reveal">Schick mir den Gratis-Einstieg</a>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Footer ───────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="brand-foot">moni goes wild 🦊</div>
+    <div class="links">
+      <a href="{{IMPRESSUM_URL}}">Impressum</a>
+      <a href="{{DATENSCHUTZ_URL}}">Datenschutz</a>
+    </div>
+    <div class="copy">© 2026 moni.goes.wild · Ramona Hoffmann</div>
+  </div>
+</footer>
+
+<!-- ───────── Sticky-CTA (Mobile) ───────── -->
+<div class="sticky-cta">
+  <a href="#optin" class="btn btn-primary btn-block">Schick mir den Gratis-Einstieg</a>
+</div>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Scroll-Reveal mit dezentem Stagger
+    var nodes = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      nodes.forEach(function (n) { n.classList.add('in'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var sibs = Array.prototype.slice.call(e.target.parentNode.querySelectorAll('.reveal'));
+          var i = Math.max(0, sibs.indexOf(e.target));
+          e.target.style.transitionDelay = Math.min(i * 45, 180) + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      nodes.forEach(function (n) { io.observe(n); });
+    }
+
+    // Form: Loading-/Erfolgs-Feedback (nicht-blockierend, native Post bleibt)
+    var form = document.querySelector('form');
+    var status = document.querySelector('.form-status');
+    if (form) {
+      form.addEventListener('submit', function () {
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Wird gesendet …'; }
+        if (status) { status.textContent = 'Schau gleich in dein Postfach 💛'; }
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

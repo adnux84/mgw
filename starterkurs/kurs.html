@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tierkommunikations-Starterkurs 2.0 — moni.goes.wild</title>
+<meta name="description" content="Der Tierkommunikations-Starterkurs 2.0 – dein erster echter Kontakt. 15 Videos, 3 Meditationen, ein Workbook. Einmalig 97 €, voll auf die Ausbildung „Sparkling Destiny" anrechenbar." />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Tierkommunikation ist die ehrlichste Verbindung deines Lebens." />
+<meta property="og:description" content="Der Starterkurs 2.0 – dein erster echter Kontakt. 15 Videos, 3 Meditationen, ein Workbook. Einmalig 97 €, voll anrechenbar." />
+<meta property="og:image" content="{{OG_IMAGE_URL}}" />
+<meta property="og:locale" content="de_DE" />
+
+<!-- Favicon-Platzhalter -->
+<link rel="icon" href="{{FAVICON_URL}}" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Open+Sans:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* ── Brand-Tokens — moni.goes.wild (echte Marke, monigoeswild.de) ──
+       Adnan: hier echte Hex-Werte eintauschen. Pflicht-Tokens lt. Brief markiert. */
+    --bg:           #ffffff;   /* Brief-Token · warmes Weiß */
+    --text:         #33302e;   /* Brief-Token · Body, hoher Kontrast */
+    --accent:       #8f6e60;   /* Brief-Token · Mokka, Markenakzent */
+    --accent-soft:  #efe0d8;   /* Brief-Token · zartes Rosé für Flächen */
+    --cta:          #6f5247;   /* Brief-Token · Button-Fläche (Weiß-Text ≥4,5:1) */
+    --cta-text:     #ffffff;   /* Brief-Token */
+
+    /* ── abgeleitete Töne (optional anpassbar) ────────────────────────── */
+    --bg-warm:      #f4ebe3;   /* warmes Sand-Band · klare Sektions-Abhebung */
+    --surface:      #faf3ee;
+    --line:         #ece1da;
+    --line-soft:    #f3eae4;
+    --text-soft:    #5f5853;
+    --text-mute:    #8c837c;
+    --rose:         #b79485;   /* Rosé · NUR dekorativ, nie als Fließtext */
+    --slate:        #4a5464;
+    --accent-deep:  #6f5247;   /* tieferes Mokka · Text auf Weiß (AA) */
+    --cta-hover:    #5b4239;
+    --accent-tint:  #faf3ee;   /* alias: warme Tönung für Flächen */
+    --ink:          #3c2e27;   /* alias: dunkle Sektionen = warmes Espresso */
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Open Sans', system-ui, -apple-system, sans-serif;
+    --font-script:  'Caveat', 'Brush Script MT', cursive;
+
+    --r-md: 12px; --r-lg: 18px; --r-xl: 26px; --r-pill: 999px;
+    --sh-1: 0 1px 2px rgba(60,40,20,.06), 0 1px 1px rgba(60,40,20,.04);
+    --sh-2: 0 8px 24px rgba(60,40,20,.08), 0 2px 4px rgba(60,40,20,.05);
+    --sh-3: 0 20px 46px rgba(60,40,20,.12), 0 3px 8px rgba(60,40,20,.06);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--accent-soft); color: var(--accent-deep); }
+
+  .shell { max-width: 760px; margin: 0 auto; padding: 0 22px; }
+
+  /* ── Topbar ──────────────────────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: .5px solid var(--line-soft);
+  }
+  .topbar-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 22px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand .fox { font-size: 22px; line-height: 1; }
+  .brand .name { font-family: var(--font-script); font-size: 26px; line-height: 1; color: var(--ink); }
+  .brand .name em { font-style: normal; color: var(--accent); }
+  .topbar .btn-sm { padding: 9px 18px; font-size: 14px; }
+  @media (max-width: 560px) { .topbar .btn-sm { display: none; } }
+
+  /* ── Buttons ─────────────────────────────────────────── */
+  .btn {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: var(--font-body); font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 16px 30px; border-radius: var(--r-pill);
+    font-size: 16px; line-height: 1;
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+    text-decoration: none;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--cta); color: var(--cta-text); box-shadow: var(--sh-1); }
+  .btn-primary:hover { background: var(--accent-deep); box-shadow: var(--sh-2); }
+  .btn-block { width: 100%; }
+  .btn-lg { padding: 18px 34px; font-size: 17px; }
+
+  /* ── Section frame ───────────────────────────────────── */
+  .sec { padding: 60px 0; border-top: 1px solid var(--line-soft); }
+  /* Full-Bleed: warmer Hintergrund läuft randlos durch, Inhalt bleibt zentriert */
+  .sec.warm {
+    background: var(--bg-warm);
+    border-top: 0;
+    box-shadow: 0 0 0 100vmax var(--bg-warm);
+    clip-path: inset(0 -100vmax);
+  }
+  .sec-num {
+    text-align: center; font-family: var(--font-display); font-style: italic;
+    color: var(--accent); font-size: 18px; margin-bottom: 14px;
+  }
+  .sec h2 {
+    font-family: var(--font-display); font-weight: 600; text-align: center;
+    font-size: clamp(28px, 4.6vw, 42px); line-height: 1.1; letter-spacing: -.018em;
+    margin: 0 auto 30px; max-width: 22ch; text-wrap: balance;
+  }
+  .sec h2 em { font-style: italic; color: var(--accent); }
+  .prose { max-width: 600px; margin: 0 auto; }
+  .prose p { font-size: 18px; line-height: 1.62; color: var(--text); margin: 0 0 20px; text-wrap: pretty; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* ── Hero ────────────────────────────────────────────── */
+  .hero { padding: 66px 0 52px; text-align: center; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent-deep); font-weight: 700; margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(32px, 5.2vw, 45px);
+    line-height: 1.12; letter-spacing: -.01em;
+    margin: 0 auto 24px; max-width: 640px;
+    color: var(--text); text-wrap: balance;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  /* Desktop: zweiter Satz auf eigene Zeile → weniger Zeilen */
+  @media (min-width: 720px) {
+    .hero h1 { text-wrap: normal; }
+    .hero h1 em { display: block; }
+  }
+  .hero .lede {
+    font-size: 19px; color: var(--text-soft);
+    max-width: 52ch; margin: 0 auto 36px; text-wrap: pretty;
+  }
+  .hero .cta-meta { margin-top: 16px; font-size: 14px; color: var(--text-mute); }
+
+  /* ── Reframe / Pull quote ────────────────────────────── */
+  .reframe {
+    background: transparent; border: 0; border-radius: 0; padding: 0;
+    max-width: 640px; margin: 0 auto;
+    position: relative;
+  }
+  .reframe blockquote {
+    margin: 0; font-family: var(--font-display); font-style: italic;
+    font-weight: 400; font-size: clamp(19px, 2.8vw, 25px);
+    line-height: 1.46; color: var(--accent-deep); text-wrap: pretty;
+  }
+  .reframe blockquote p { margin: 0 0 20px; }
+  .reframe blockquote p:last-child { margin-bottom: 0; }
+
+  /* ── Story ───────────────────────────────────────────── */
+  .story {
+    max-width: 600px; margin: 0 auto; text-align: center;
+    background: transparent; border: 0; border-radius: 0; padding: 0;
+  }
+  .story p {
+    margin: 0; font-family: var(--font-display); font-style: italic;
+    font-size: clamp(19px, 2.6vw, 23px); line-height: 1.5; color: var(--text);
+    text-wrap: pretty;
+  }
+  .story .sign { display: block; margin-top: 20px; font-family: var(--font-script); font-size: 30px; color: var(--accent); font-weight: 600; }
+
+  /* ── Curriculum ──────────────────────────────────────── */
+  .curric { max-width: 640px; margin: 0 auto; }
+  .curric-block { margin-bottom: 26px; }
+  .curric-head {
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;
+  }
+  .curric-head .k {
+    font-family: var(--font-display); font-style: italic; color: var(--accent);
+    font-size: 26px; font-weight: 500; line-height: 1;
+  }
+  .curric-head h3 {
+    margin: 0; font-family: var(--font-display); font-weight: 500;
+    font-size: 22px; line-height: 1.2; color: var(--ink);
+  }
+  .lesson-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .lesson-list li {
+    position: relative; padding: 12px 16px 12px 40px;
+    background: var(--surface); border: .5px solid var(--line-soft);
+    border-radius: var(--r-md); font-size: 16px; color: var(--text); line-height: 1.45;
+  }
+  .lesson-list li::before {
+    content: "♡"; position: absolute; left: 16px; top: 12px; color: var(--accent); font-size: 15px;
+  }
+  .lesson-list li.more { font-style: italic; color: var(--text-mute); background: transparent; border-style: dashed; }
+  .lesson-list li.more::before { content: "…"; top: 9px; }
+  .curric-note { font-size: 15px; color: var(--text-soft); margin: 8px 0 0; }
+  .curric-note b { color: var(--ink); font-weight: 600; }
+
+  /* ── Für wen / nicht ─────────────────────────────────── */
+  .vt { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 680px; margin: 0 auto; }
+  @media (max-width: 720px) { .vt { grid-template-columns: 1fr; } }
+  .vt > div {
+    border: 0; border-radius: 0; background: transparent;
+    padding: 6px 0 6px 22px;
+  }
+  .vt .yes { border-left: 3px solid var(--accent); }
+  .vt .no  { border-left: 3px solid var(--text-mute); }
+  .vt h4 { margin: 0 0 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+  .vt .yes h4 { color: var(--accent-deep); }
+  .vt .no  h4 { color: var(--text-mute); }
+  .vt p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--text); }
+
+  /* ── Angebot / Preis ─────────────────────────────────── */
+  .offer {
+    background: var(--ink); color: #efe4d2;
+    border-radius: var(--r-xl);
+    padding: 48px 38px; max-width: 640px; margin: 0 auto;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .offer::before {
+    content: ""; position: absolute; right: -140px; top: -140px;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, var(--accent), transparent 62%);
+    opacity: .5; pointer-events: none;
+  }
+  .offer .price {
+    font-family: var(--font-display); font-weight: 500;
+    font-size: 72px; line-height: 1; letter-spacing: -.02em; color: #fff;
+    position: relative;
+  }
+  .offer .price small {
+    display: block; margin-top: 10px;
+    font-family: var(--font-body); font-weight: 400; font-size: 14px;
+    color: color-mix(in srgb, #efe4d2 70%, transparent); letter-spacing: .03em;
+  }
+  .offer .anrechenbar {
+    position: relative; max-width: 46ch; margin: 26px auto 0;
+    font-size: 16px; line-height: 1.6; color: #efe4d2;
+  }
+  .offer .anrechenbar b { color: var(--accent-soft); font-weight: 700; }
+  .offer .btn { margin-top: 30px; position: relative; }
+  .offer .btn-primary { background: #fff; color: var(--accent-deep); }
+  .offer .btn-primary:hover { background: var(--accent-soft); color: var(--accent-deep); }
+
+  /* ── Ausblick ────────────────────────────────────────── */
+  .outlook {
+    max-width: 600px; margin: 0 auto;
+    border-left: 3px solid var(--accent-soft); padding: 6px 0 6px 26px;
+  }
+  .outlook p {
+    margin: 0; font-family: var(--font-display); font-style: italic;
+    font-size: clamp(18px, 2.5vw, 22px); line-height: 1.5; color: var(--text); text-wrap: pretty;
+  }
+
+  /* ── FAQ ─────────────────────────────────────────────── */
+  .faq { display: grid; gap: 12px; max-width: 680px; margin: 0 auto; }
+  .faq details {
+    background: var(--surface); border: .5px solid var(--line);
+    border-radius: var(--r-md); padding: 18px 22px;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .faq details[open] { border-color: var(--accent-soft); background: var(--accent-tint); }
+  .faq summary {
+    cursor: pointer; font-family: var(--font-display);
+    font-size: 19px; font-weight: 500; color: var(--ink);
+    list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "+"; font-family: var(--font-body); font-weight: 400;
+    font-size: 24px; color: var(--accent); line-height: 1; flex-shrink: 0;
+    transition: transform .2s ease;
+  }
+  .faq details[open] summary::after { transform: rotate(45deg); }
+  .faq .answer {
+    margin-top: 14px; padding-top: 14px; border-top: .5px dashed var(--line);
+    color: var(--text-soft); line-height: 1.6; font-size: 16px;
+  }
+
+  /* ── Final CTA ───────────────────────────────────────── */
+  .final-cta {
+    background: transparent; border: 0; border-radius: 0; padding: 0;
+    text-align: center; max-width: 680px; margin: 0 auto;
+  }
+  .final-cta h2 {
+    font-family: var(--font-display); font-weight: 600;
+    font-size: clamp(28px, 4.4vw, 42px); line-height: 1.12; letter-spacing: -.015em;
+    margin: 0 auto 30px; max-width: 22ch; text-wrap: balance; color: var(--ink);
+  }
+  .final-cta h2 em { font-style: italic; color: var(--accent); }
+  .ps {
+    margin: 30px auto 0; max-width: 48ch;
+    font-size: 14px; color: var(--text-mute); line-height: 1.55;
+  }
+  .ps a { color: var(--accent-deep); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ── Footer ──────────────────────────────────────────── */
+  .footer { background: var(--ink); color: #e9ddcb; padding: 40px 22px 34px; margin-top: 56px; }
+  .footer-inner { max-width: 760px; margin: 0 auto; text-align: center; display: grid; gap: 18px; }
+  .footer .brand-foot { font-family: var(--font-script); font-size: 30px; color: var(--accent-soft); }
+  .footer .links { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; }
+  .footer a { color: #e9ddcb; text-decoration: none; opacity: .82; font-size: 14px; }
+  .footer a:hover { opacity: 1; color: var(--accent-soft); }
+  .footer .copy { font-size: 12px; opacity: .55; }
+
+  /* ── Sticky-CTA (Mobile) ─────────────────────────────── */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: none; align-items: center; gap: 12px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-top: .5px solid var(--line);
+  }
+  .sticky-cta .sc-price { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--ink); white-space: nowrap; }
+  .sticky-cta .btn { flex: 1; }
+  @media (max-width: 720px) {
+    .sticky-cta { display: flex; }
+    body { padding-bottom: 84px; }
+  }
+
+  /* ── Scroll-Reveal ───────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────── Topbar ───────── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="fox">🦊</span>
+      <span class="name">moni <em>goes</em> wild</span>
+    </div>
+    <a href="{{CHECKOUT_URL_97}}" class="btn btn-primary btn-sm">Jetzt für 97 € starten</a>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ───────── 1) Hero ───────── -->
+  <header class="hero">
+    <div class="eyebrow reveal">Tierkommunikations-Starterkurs 2.0</div>
+    <h1 class="reveal">Tierkommunikation ist nicht „wo liegt dein Hund gern". <em>Es ist die ehrlichste Verbindung deines Lebens.</em></h1>
+    <p class="lede reveal">Der Tierkommunikations-Starterkurs 2.0 – dein erster echter Kontakt. 15 Videos, 3 Meditationen, ein Workbook. Für alle, die schon immer das Gefühl hatten, da geht mehr zwischen ihnen und ihren Tieren.</p>
+    <a href="{{CHECKOUT_URL_97}}" class="btn btn-primary btn-lg reveal">Jetzt für 97 € starten</a>
+    <div class="cta-meta reveal">Einmalig 97 € · sofortiger Zugriff · voll auf die Ausbildung anrechenbar</div>
+  </header>
+
+  <!-- ───────── 2) Der Reframe ───────── -->
+  <section class="sec warm">
+    <div class="sec-num reveal">Der Reframe</div>
+    <div class="reframe reveal">
+      <blockquote>
+        <p>Die meisten denken bei Tierkommunikation an: „Wo schläft mein Hund am liebsten?" Ehrlich? Das ist die langweiligste Frage, die du stellen kannst.</p>
+        <p>Tierkommunikation heißt: Du fragst, und du kriegst eine Antwort. Auf alles. Deine Tiere sehen, wo du dich kleinmachst, wo du über deine eigenen Grenzen rennst, wo du dir selbst nicht mehr zuhörst. Und sie zeigen es dir – aus bedingungsloser Liebe.</p>
+        <p>Das hier ist kein Technik-Kurs. Es ist ein „Wie vertraue ich mir selbst wieder"-Kurs. Mit Tieren als deinen Lehrern.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ───────── 3) Das Problem / die Einladung ───────── -->
+  <section class="sec">
+    <div class="sec-num reveal">Die Einladung</div>
+    <div class="prose reveal">
+      <p>Vielleicht hast du's schon versucht. Hast die Augen zugemacht, gewartet – und „nichts gehört". Und dann gedacht: <em>Ich kann das halt nicht.</em></p>
+      <p>Doch, kannst du. Du hast die Verbindung längst – du nimmst sie nur noch nicht bewusst wahr. Es scheitert nie an der Technik. Es scheitert an dem leisen Satz „ich bin nicht gut genug dafür". Genau da setzen wir an.</p>
+    </div>
+  </section>
+
+  <!-- ───────── 4) Ramonas Geschichte ───────── -->
+  <section class="sec warm">
+    <div class="sec-num reveal">Wer dich da durchführt</div>
+    <div class="story reveal">
+      <p>Ich konnte dir mal Badezimmer verkaufen. Wirklich – Kauffrau im Sanitärgroßhandel. Dann hat mich die Tierkommunikation gefunden und alles gedreht. Heute versteh ich meine Tiere nicht nur, ich <em>fühle</em> sie. Wenn ich das kann, kannst du das auch. Das ist kein Talent. Das ist eine Entscheidung.</p>
+      <span class="sign">— Ramona</span>
+    </div>
+  </section>
+
+  <!-- ───────── 5) Was drin ist ───────── -->
+  <section class="sec">
+    <div class="sec-num reveal">Was drin ist</div>
+    <h2 class="reveal">15 Videos, 3 Meditationen, <em>ein Workbook.</em></h2>
+    <div class="curric">
+      <div class="curric-block reveal">
+        <div class="curric-head">
+          <span class="k">01</span>
+          <h3>15 Videos, jedes 10–15 Min – locker zwischendurch</h3>
+        </div>
+        <ul class="lesson-list">
+          <li>Der entspannte Einstieg (kein „von oben herab")</li>
+          <li>Was Tierkommunikation <em>wirklich</em> ist – und deine 6 Wahrnehmungskanäle</li>
+          <li>Wie du am besten startest – bei dir</li>
+          <li>Was du brauchst (Spoiler: fast nichts)</li>
+          <li>Deine Anfänge &amp; warum Dranbleiben alles ist</li>
+          <li>Die raue See – die Wahrheit, die dir keiner sagt</li>
+          <li>Dein Herz als Kompass – Klarheit &amp; Grenzen</li>
+          <li>Schwierigkeiten in der Verbindung – und was du dagegen tust</li>
+          <li>Die Tiere an deiner Seite – deine 24/7-Hotline</li>
+          <li>Was dich zurückhält – Scham, Umfeld, alte Glaubenssätze</li>
+          <li>Deine Tiere als dein bestes Coaching-Team</li>
+          <li class="more">… und mehr</li>
+        </ul>
+      </div>
+
+      <div class="curric-block reveal">
+        <div class="curric-head">
+          <span class="k">02</span>
+          <h3>3 geführte Meditationen</h3>
+        </div>
+        <ul class="lesson-list">
+          <li>„Zurück zu dir"</li>
+          <li>„Der magische Wasserfall"</li>
+          <li>„Deine Reise zur Insel der Lebendigkeit" – hier passiert der erste Kontakt</li>
+        </ul>
+      </div>
+
+      <div class="curric-block reveal">
+        <div class="curric-head">
+          <span class="k">03</span>
+          <h3>Digitales Workbook</h3>
+        </div>
+        <p class="curric-note">Damit dein Kopf was zum Festhalten hat und du wirklich ins Tun kommst.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 6) Für wen / für wen nicht ───────── -->
+  <section class="sec warm">
+    <div class="sec-num reveal">Für wen das ist</div>
+    <div class="vt">
+      <div class="yes reveal">
+        <h4>Für dich, wenn …</h4>
+        <p>… du deine Tiere wirklich verstehen willst, bereit bist hinzuhören (auch wenn's mal unbequem wird), und Lust auf den ehrlichsten Spiegel deines Lebens hast.</p>
+      </div>
+      <div class="no reveal">
+        <h4>Nicht für dich, wenn …</h4>
+        <p>… du nur einen Trick willst, um deinem Hund das Bellen abzugewöhnen, und nichts an dir selbst anschauen magst.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── 7) Das Angebot / Preis ───────── -->
+  <section class="sec">
+    <div class="sec-num reveal">Das Angebot</div>
+    <div class="offer reveal">
+      <div class="price">97 €<small>einmalig · sofortiger Zugriff · lebenslang</small></div>
+      <p class="anrechenbar"><b>Voll anrechenbar.</b> Wenn du danach die große Ausbildung „Sparkling Destiny" machst, rechnen wir deine 97 € voll an. Dein Einstieg kostet dich am Ende also nichts – außer der Entscheidung anzufangen.</p>
+      <a href="{{CHECKOUT_URL_97}}" class="btn btn-primary btn-lg">Jetzt für 97 € starten</a>
+    </div>
+  </section>
+
+  <!-- ───────── 8) Der Ausblick (Ascension-Brücke) ───────── -->
+  <section class="sec warm">
+    <div class="sec-num reveal">Der Ausblick</div>
+    <div class="outlook reveal">
+      <p>Sieh den Starterkurs wie ein Praktikum. Du machst deine ersten echten Erfahrungen und findest raus: Ist das meins? Und wenn du den Meistertitel willst – die ganze Tiefe, sechs Monate, mit allem Drum und Dran – dann wartet die Ausbildung auf dich. Aber eins nach dem anderen. Erst der erste Kontakt.</p>
+    </div>
+  </section>
+
+  <!-- ───────── 9) FAQ ───────── -->
+  <section class="sec">
+    <div class="sec-num reveal">Was du noch wissen willst</div>
+    <div class="faq reveal">
+      <details>
+        <summary>Ich bin total verkopft, klappt das überhaupt?</summary>
+        <div class="answer">Willkommen im Club, ich auch. Genau dafür ist der Kurs gebaut – wir gehen nicht gegen deinen Kopf an, wir bauen einfach dein Selbstvertrauen wieder auf. Den Rest erledigt das von allein.</div>
+      </details>
+      <details>
+        <summary>Ich hab keine Zeit.</summary>
+        <div class="answer">Die Videos sind 10–15 Min. Du kannst sie beim Spazieren hören. Zeit hat niemand – Zeit nimmt man sich.</div>
+      </details>
+      <details>
+        <summary>Brauche ich Vorkenntnisse oder ein besonderes Tier?</summary>
+        <div class="answer">Nein. Jedes Tier, jeder Mensch. Du brauchst kein „begabtes" Tier und keine Ausrüstung.</div>
+      </details>
+      <details>
+        <summary>Gibt es eine Geld-zurück-Garantie?</summary>
+        <div class="answer">Nein – aus Prinzip. Tierkommunikation ist kein Zaubertrick, den ich dir garantieren kann. Es ist eine Fähigkeit, die du übst. Was ich dir gebe: den ehrlichsten Einstieg, den ich kenne, und alles, was du zum Loslegen brauchst.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ───────── 10) Letzter CTA ───────── -->
+  <section class="sec warm">
+    <div class="final-cta reveal">
+      <h2>Dein Tier wartet nicht darauf, dass du perfekt bist. <em>Nur darauf, dass du anfängst.</em></h2>
+      <a href="{{CHECKOUT_URL_97}}" class="btn btn-primary btn-lg">Jetzt für 97 € starten</a>
+      <!-- Separater Bonus-Hinweis — KEIN Kursbestandteil (siehe Harte Regel 2) -->
+      <p class="ps">PS: Es gibt auch eine kostenlose WhatsApp-Community – komm gern dazu: <a href="{{WHATSAPP_COMMUNITY_LINK}}">zur Community</a></p>
+    </div>
+  </section>
+
+</div>
+
+<!-- ───────── Footer ───────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="brand-foot">moni goes wild 🦊</div>
+    <div class="links">
+      <a href="{{IMPRESSUM_URL}}">Impressum</a>
+      <a href="{{DATENSCHUTZ_URL}}">Datenschutz</a>
+    </div>
+    <div class="copy">© 2026 moni.goes.wild · Ramona Hoffmann</div>
+  </div>
+</footer>
+
+<!-- ───────── Sticky-CTA (Mobile) ───────── -->
+<div class="sticky-cta">
+  <span class="sc-price">97 €</span>
+  <a href="{{CHECKOUT_URL_97}}" class="btn btn-primary">Jetzt starten</a>
+</div>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var nodes = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      nodes.forEach(function (n) { n.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    nodes.forEach(function (n) { io.observe(n); });
+  })();
+</script>
+
+</body>
+</html>
