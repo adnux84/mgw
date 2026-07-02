@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Warteliste — Sparkling Destiny LIVE — moni.goes.wild</title>
+<meta name="description" content="Das erste Live-Event von moni goes wild. Trag dich auf die Warteliste ein und erfahre als Erste, wann der Ticketverkauf startet.">
+<meta property="og:title" content="Sparkling Destiny LIVE — die Warteliste ist offen">
+<meta property="og:description" content="Ein Tag. Deine Tiere. Deine Entscheidung. Erfahre als Erste, wann die Tickets kommen.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=Homemade+Apple&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:oklch(98% 0.012 80); --cream:oklch(96% 0.018 78); --sand:oklch(92% 0.022 78);
+  --linen:oklch(88% 0.024 75); --stone:oklch(72% 0.018 70); --bark:oklch(45% 0.020 60);
+  --ink:oklch(24% 0.018 50); --ink-soft:oklch(34% 0.018 55);
+  --terra-50:oklch(96% 0.020 45); --terra-100:oklch(90% 0.045 45); --terra-200:oklch(82% 0.080 42);
+  --terra-400:oklch(68% 0.120 40); --terra:oklch(60% 0.140 38); --terra-700:oklch(48% 0.130 35); --terra-900:oklch(32% 0.085 32);
+  --sage-50:oklch(96% 0.018 145); --sage-100:oklch(90% 0.030 145); --sage:oklch(72% 0.045 145); --sage-700:oklch(48% 0.045 145);
+  --bg:var(--paper); --surface:var(--cream); --line:oklch(82% 0.020 75); --line-soft:oklch(90% 0.018 75);
+  --text:var(--ink); --text-soft:var(--ink-soft); --text-mute:var(--stone);
+  --font-display:'Libre Caslon Text',Georgia,serif; --font-body:'Inter',system-ui,sans-serif; --font-script:'Homemade Apple',cursive;
+  --shadow-sm:0 1px 2px rgba(60,40,20,.06),0 1px 1px rgba(60,40,20,.04);
+  --shadow:0 8px 24px rgba(60,40,20,.08),0 1px 2px rgba(60,40,20,.06);
+  --shadow-lg:0 24px 48px rgba(60,40,20,.12),0 2px 8px rgba(60,40,20,.06);
+  --radius:16px; --max:640px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;text-align:center}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+h1,h2{font-family:var(--font-display);font-weight:400;line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,6vw,3.1rem)}
+h2{font-size:clamp(1.5rem,4.5vw,2.1rem);margin-bottom:.6em}
+em{font-style:italic}
+p{margin:0 auto .9em;max-width:52ch}
+.script{font-family:var(--font-script);color:var(--terra-700);font-size:1.25rem;line-height:1.4}
+.eyebrow{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra-700);font-weight:600;margin-bottom:1.2em}
+section{padding:64px 0}
+.soft{background:var(--surface)}
+
+.nav{position:sticky;top:0;z-index:50;background:oklch(98% 0.012 80/.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.nav .wrap{display:flex;align-items:center;justify-content:center;padding-top:12px;padding-bottom:12px}
+.brand{font-family:var(--font-display);font-size:1.05rem;letter-spacing:.02em}
+.brand em{font-style:italic;color:var(--terra-700)}
+
+.hero{padding:64px 0 48px}
+.fox{font-size:2.4rem;display:block;margin-bottom:18px}
+.hero h1{margin-bottom:.5em}
+.hero .lead{font-size:1.12rem;color:var(--text-soft);max-width:48ch;margin:0 auto 1.2em}
+.meta-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 auto 8px}
+.pill{background:var(--terra-50);color:var(--terra-900);border:1px solid var(--terra-100);border-radius:999px;padding:8px 16px;font-size:.9rem;font-weight:500}
+
+/* form card */
+.form-card{background:var(--paper);border:2px solid var(--terra);border-radius:var(--radius);padding:34px 28px;box-shadow:var(--shadow);max-width:460px;margin:10px auto 0;position:relative;text-align:left}
+.form-card .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--terra);color:var(--paper);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;white-space:nowrap}
+label{display:block;font-size:.88rem;font-weight:600;color:var(--ink-soft);margin:18px 0 6px}
+input[type=text],input[type=email],select{width:100%;padding:14px 16px;font-family:var(--font-body);font-size:1rem;color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:12px;outline:none;transition:border-color .2s ease}
+input:focus,select:focus{border-color:var(--terra)}
+.btn{display:block;width:100%;background:var(--ink);color:var(--paper);font-family:var(--font-body);font-weight:600;font-size:1.05rem;padding:16px 32px;border-radius:999px;border:none;cursor:pointer;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease;margin-top:26px}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.tiny{font-size:.8rem;color:var(--text-mute);margin-top:14px;line-height:1.5;text-align:center}
+.success{display:none;text-align:center;padding:26px 10px 10px}
+.success .fox{margin-bottom:10px}
+.success h2{margin-bottom:.4em}
+
+.why{display:grid;grid-template-columns:1fr;gap:14px;margin-top:30px;text-align:left}
+.why .row{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow-sm);font-size:1rem;color:var(--text-soft)}
+.why .row strong{color:var(--terra-900);font-family:var(--font-display)}
+
+.note{font-family:var(--font-display);font-style:italic;font-size:1.25rem;line-height:1.5;max-width:30ch;margin:0 auto}
+.sign{font-family:var(--font-script);color:var(--terra-700);font-size:1.5rem;margin-top:22px}
+
+footer{padding:42px 0 64px;color:var(--text-mute);font-size:.88rem}
+footer .brand{font-size:1.1rem;margin-bottom:10px}
+footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap"><span class="brand">moni <em>goes</em> wild</span></div>
+</nav>
+
+<header class="hero">
+  <div class="wrap reveal">
+    <span class="fox">🦊</span>
+    <p class="eyebrow">Es passiert wirklich</p>
+    <h1>Sparkling Destiny <em>LIVE</em><br>— die Warteliste ist offen.</h1>
+    <p class="lead">Ihr habt gefragt: „Wann? Wo? Kann ich buchen?"<br>Bald. Und wer hier steht, erfährt es <strong>als Erste</strong> — bevor es irgendwo sonst zu sehen ist.</p>
+    <div class="meta-pills">
+      <span class="pill">📅 Spätsommer 2026</span>
+      <span class="pill">📍 in der Eifel</span>
+      <span class="pill">🎟️ begrenzte Plätze</span>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top:8px">
+  <div class="wrap reveal">
+    <div class="form-card" id="warteliste">
+      <span class="tag">Kostenlos & unverbindlich</span>
+      <form id="wl-form" action="{{FORM_ACTION_URL}}" method="POST">
+        <label for="vorname">Dein Vorname</label>
+        <input type="text" id="vorname" name="vorname" placeholder="z. B. Sabine" required>
+        <label for="email">Deine E-Mail-Adresse</label>
+        <input type="email" id="email" name="email" placeholder="du@beispiel.de" required>
+        <label for="personen">Mit wie vielen Personen würdest du kommen?</label>
+        <select id="personen" name="personen" required>
+          <option value="" disabled selected>Bitte wählen …</option>
+          <option value="1">Ich komme allein</option>
+          <option value="2">Zu zweit</option>
+          <option value="3+">Wir sind 3 oder mehr</option>
+        </select>
+        <button class="btn" type="submit">Ich will als Erste erfahren, wann es losgeht 🦊</button>
+        <p class="tiny">Kein Spam, kein Verkauf deiner Daten. Du bekommst genau eine Sache: die Nachricht, wenn die Tickets kommen — vor allen anderen. Abmelden jederzeit.</p>
+      </form>
+      <div class="success" id="wl-success">
+        <span class="fox">🦊</span>
+        <h2>Du stehst auf der Liste!</h2>
+        <p>Halt dein Postfach im Blick — du hörst von uns, bevor es irgendjemand sonst erfährt. Bis bald im Saal ♡</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap reveal">
+    <p class="eyebrow">Warum eine Warteliste?</p>
+    <h2>Weil die Plätze <em>begrenzt</em> sind.</h2>
+    <div class="why">
+      <div class="row"><strong>Du bist zuerst dran.</strong> Die Warteliste bekommt den Ticket-Link vor Instagram, vor der Community, vor allen. Bei begrenzten Plätzen ist das kein Marketing-Spruch, sondern schlicht die Reihenfolge.</div>
+      <div class="row"><strong>Du hilfst uns beim Planen.</strong> Je genauer wir wissen, wie viele kommen wollen, desto besser wird der Tag — vom Saal bis zum Ablauf.</div>
+      <div class="row"><strong>Du verpflichtest dich zu nichts.</strong> Eintragen heißt nicht kaufen. Es heißt nur: du willst es nicht verpassen.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap reveal">
+    <p class="script">und ehrlich …</p>
+    <br>
+    <p class="note">„Ja, vielleicht ist es verrückt. Und ja, wir machen es trotzdem. Ich würde mich so freuen, wenn du dabei bist, wenn die Herde zum ersten Mal in einem Raum steht."</p>
+    <div class="sign">— Ramona 🦊</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">moni <em>goes</em> wild ♡</div>
+    <p style="max-width:44ch;margin:0 auto 14px">Aus Liebe zu Tieren — und zu dir selbst.</p>
+    <div>
+      <a href="https://monigoeswild.de/home">monigoeswild.de</a>·
+      <a href="{{IMPRESSUM_URL}}">Impressum</a>·
+      <a href="{{DATENSCHUTZ_URL}}">Datenschutz</a>
+    </div>
+    <p style="margin-top:16px">© 2026 moni.goes.wild · Ramona Hoffmann</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in')});}
+  else{
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e)});
+  }
+
+  /* Formular-Handling:
+     - Solange action="{{FORM_ACTION_URL}}" ein Platzhalter ist, wird der Submit
+       abgefangen und nur die Erfolgs-Ansicht gezeigt (Demo-Modus).
+     - Sobald eine echte URL eingetragen ist (Tally, Klaviyo-Form-Endpoint,
+       Make-Webhook o. ä.), wird per fetch abgeschickt und danach die
+       Erfolgs-Ansicht gezeigt. */
+  var form=document.getElementById('wl-form'), ok=document.getElementById('wl-success');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var action=form.getAttribute('action');
+    var done=function(){form.style.display='none';ok.style.display='block';};
+    if(!action||action.indexOf('{{')===0){done();return;}
+    var data=new FormData(form);
+    fetch(action,{method:'POST',body:data,mode:'no-cors'}).then(done).catch(done);
+  });
+})();
+</script>
+</body>
+</html>
