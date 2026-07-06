@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sparkling Destiny LIVE — moni.goes.wild</title>
-<meta name="description" content="Ein Tag. Deine Tiere. Deine Entscheidung. Das Live-Event von moni goes wild — erlebe Tierkommunikation live in der Stadthalle, am 26. August 2026.">
+<meta name="description" content="Ein Tag. Deine Tiere. Deine Entscheidung. Das erste Live-Event von moni goes wild — Tierkommunikation live in der Stadthalle Bitburg, am 29. August 2026.">
 <meta property="og:title" content="Sparkling Destiny LIVE — moni.goes.wild">
-<meta property="og:description" content="Ein Tag. Deine Tiere. Deine Entscheidung. Das Live-Event von moni goes wild am 26. August 2026.">
+<meta property="og:description" content="Ein Tag. Deine Tiere. Deine Entscheidung. Das Live-Event von moni goes wild am 29. August 2026 in Bitburg.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,57 +19,53 @@
   --terra-50:oklch(96% 0.020 45); --terra-100:oklch(90% 0.045 45); --terra-200:oklch(82% 0.080 42);
   --terra-400:oklch(68% 0.120 40); --terra:oklch(60% 0.140 38); --terra-700:oklch(48% 0.130 35); --terra-900:oklch(32% 0.085 32);
   --sage-50:oklch(96% 0.018 145); --sage-100:oklch(90% 0.030 145); --sage:oklch(72% 0.045 145); --sage-700:oklch(48% 0.045 145);
-  --rust:oklch(50% 0.140 35);
   --bg:var(--paper); --surface:var(--cream); --line:oklch(82% 0.020 75); --line-soft:oklch(90% 0.018 75);
   --text:var(--ink); --text-soft:var(--ink-soft); --text-mute:var(--stone);
   --font-display:'Libre Caslon Text',Georgia,serif; --font-body:'Inter',system-ui,sans-serif; --font-script:'Homemade Apple',cursive;
   --shadow-sm:0 1px 2px rgba(60,40,20,.06),0 1px 1px rgba(60,40,20,.04);
   --shadow:0 8px 24px rgba(60,40,20,.08),0 1px 2px rgba(60,40,20,.06);
   --shadow-lg:0 24px 48px rgba(60,40,20,.12),0 2px 8px rgba(60,40,20,.06);
-  --radius:16px; --max:720px;
+  --radius:16px; --max:760px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;text-align:center}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.15;letter-spacing:-.01em}
-h1{font-size:clamp(2.1rem,6vw,3.4rem)}
-h2{font-size:clamp(1.6rem,4.5vw,2.4rem);margin-bottom:.6em}
-h3{font-size:1.15rem;font-weight:700}
-em{font-style:italic}
+h1{font-size:clamp(2.4rem,7vw,4rem)}
+h2{font-size:clamp(1.7rem,4.5vw,2.5rem);margin-bottom:.5em}
+h3{font-size:1.2rem;font-weight:700;color:var(--terra-900)}
+em{font-style:italic;color:var(--terra-700)}
 p{margin:0 auto .9em;max-width:56ch}
 .script{font-family:var(--font-script);color:var(--terra-700);font-size:1.25rem;line-height:1.4}
 .eyebrow{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra-700);font-weight:600;margin-bottom:1.2em}
-section{padding:72px 0}
-.soft{background:var(--surface)}
-.sand{background:var(--sand)}
-
-/* nav */
+section{padding:76px 0}
+.soft{background:var(--surface)} .sand{background:var(--sand)}
 .nav{position:sticky;top:0;z-index:50;background:oklch(98% 0.012 80/.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
-.brand{font-family:var(--font-display);font-size:1.05rem;letter-spacing:.02em}
-.brand em{font-style:italic;color:var(--terra-700)}
-
-/* buttons */
-.btn{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--font-body);font-weight:600;font-size:1rem;padding:16px 32px;border-radius:999px;text-decoration:none;box-shadow:var(--shadow);transition:transform .2s ease,box-shadow .2s ease}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+.brand{font-family:var(--font-display);font-size:1.05rem}
+.brand em{color:var(--terra-700)}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--font-body);font-weight:600;font-size:1rem;padding:16px 34px;border-radius:999px;text-decoration:none;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn.sm{padding:9px 18px;font-size:.85rem}
 .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);box-shadow:none}
 .sub-note{font-size:.9rem;color:var(--text-mute);margin-top:14px}
 a{color:var(--terra-700)}
-
-/* hero */
-.hero{padding:64px 0 60px}
-.fox{font-size:2.4rem;display:block;margin-bottom:18px}
-.hero h1{margin-bottom:.4em}
-.hero .lead{font-size:1.15rem;color:var(--text-soft);max-width:52ch;margin:0 auto 1.6em}
-.meta-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 auto 26px}
-.pill{background:var(--terra-50);color:var(--terra-900);border:1px solid var(--terra-100);border-radius:999px;padding:8px 16px;font-size:.9rem;font-weight:500}
-
-/* quote */
-.pull{font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,4vw,2rem);line-height:1.35;color:var(--ink);max-width:24ch;margin:0 auto}
-.pull-by{font-family:var(--font-body);font-style:normal;font-size:.9rem;color:var(--text-mute);margin-top:18px;letter-spacing:.04em}
-
-/* two columns is/isnt */
+.fox{font-size:2.4rem;display:block;margin-bottom:16px}
+.hero{padding:60px 0 64px}
+.hero .lead{font-size:1.15rem;color:var(--text-soft);max-width:50ch;margin:0 auto 1.4em}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:center;margin:0 auto 1.8em;font-size:1rem;color:var(--ink);font-weight:500}
+.pull{font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,4vw,2rem);line-height:1.35;color:var(--ink);max-width:26ch;margin:0 auto}
+.pull-by{font-family:var(--font-body);font-style:normal;font-size:.9rem;color:var(--text-mute);margin-top:16px}
+.feat{display:grid;grid-template-columns:1fr;gap:16px;margin-top:34px;text-align:left}
+.feat .row{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm)}
+.feat .row h3{margin-bottom:6px}
+.feat .row p{margin:0;max-width:none;color:var(--text-soft);font-size:1rem}
+.flow{list-style:none;margin:30px auto 0;max-width:56ch;text-align:left;display:flex;flex-direction:column;gap:2px}
+.flow li{padding:14px 0;border-bottom:1px solid var(--line-soft);font-size:1.05rem;color:var(--ink)}
+.flow li:last-child{border-bottom:none}
+.flow b{font-family:var(--font-display);font-weight:400}
+.flow span{display:block;font-size:.95rem;color:var(--text-soft);margin-top:2px}
 .cols{display:grid;grid-template-columns:1fr;gap:20px;margin-top:32px;text-align:left}
 @media(min-width:640px){.cols{grid-template-columns:1fr 1fr}}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-sm)}
@@ -80,57 +76,29 @@ a{color:var(--terra-700)}
 .card li::before{position:absolute;left:0;top:-1px;font-size:1.05rem}
 .card.is li::before{content:"🦊"}
 .card.isnt li::before{content:"—";color:var(--stone);font-weight:600}
-
-/* feature list */
-.feat{display:grid;grid-template-columns:1fr;gap:16px;margin-top:34px;text-align:left}
-.feat .row{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow-sm)}
-.feat .row h3{margin-bottom:6px;color:var(--terra-900)}
-.feat .row p{margin:0;max-width:none;color:var(--text-soft);font-size:1rem}
-
-/* agenda */
-.agenda{margin-top:34px;text-align:left}
-.slot{display:grid;grid-template-columns:76px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
-.slot:last-child{border-bottom:none}
-.slot .t{font-family:var(--font-display);font-size:1.05rem;color:var(--terra-700)}
-.slot .what{font-size:1rem;color:var(--text-soft)}
-.slot .what strong{color:var(--ink);font-weight:600}
-.slot.peak{background:var(--terra-50);border-radius:12px;padding:16px 14px;border-bottom:none;margin:4px -14px}
-
-/* pricing */
-.plan{background:var(--paper);border:2px solid var(--terra);border-radius:var(--radius);padding:36px 30px;box-shadow:var(--shadow);max-width:420px;margin:34px auto 0;position:relative}
-.plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--terra);color:var(--paper);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;white-space:nowrap}
-.plan .name{font-family:var(--font-display);font-size:1.3rem;margin-bottom:6px}
-.plan .amount{font-family:var(--font-display);font-size:2.8rem;line-height:1;margin:12px 0 2px}
-.plan .amount .was{font-size:1.3rem;color:var(--text-mute);text-decoration:line-through;margin-right:10px}
-.plan .per{font-size:.9rem;color:var(--text-mute);margin-bottom:18px}
-.plan .line2{font-size:.95rem;color:var(--text-soft);margin-bottom:22px}
+.ticket{background:var(--paper);border:2px solid var(--terra);border-radius:var(--radius);padding:38px 28px;max-width:460px;margin:32px auto 0;box-shadow:var(--shadow)}
+.ticket .tag{background:var(--terra);color:var(--paper);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:999px;display:inline-block;margin-bottom:16px}
+.ticket .name{font-family:var(--font-display);font-size:1.4rem;margin-bottom:8px}
+.ticket .amount{font-family:var(--font-display);font-size:3.2rem;line-height:1;margin:6px 0 4px;color:var(--ink)}
+.ticket .meta{font-size:.95rem;color:var(--text-mute);margin-bottom:18px}
+.ticket .desc{font-size:.98rem;color:var(--text-soft);margin-bottom:22px}
 .gift{background:var(--sage-50);border:1px dashed var(--sage);border-radius:var(--radius);padding:20px 24px;margin-top:26px;font-size:1rem;color:var(--sage-700);max-width:52ch;margin-left:auto;margin-right:auto}
 .gift strong{color:var(--ink)}
-
-/* faq */
 .faq{text-align:left;margin-top:30px}
 .qa{border-bottom:1px solid var(--line);padding:20px 0}
 .qa summary{font-family:var(--font-display);font-size:1.15rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:baseline}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary::after{content:"+";color:var(--terra);font-size:1.4rem;font-family:var(--font-body)}
+.qa summary::after{content:"+";color:var(--terra);font-size:1.4rem}
 .qa[open] summary::after{content:"–"}
 .qa p{margin:14px 0 2px;max-width:none;color:var(--text-soft);font-size:1rem}
-
-/* personal */
-.note{font-family:var(--font-display);font-style:italic;font-size:1.3rem;line-height:1.5;max-width:30ch;margin:0 auto}
-.sign{font-family:var(--font-script);color:var(--terra-700);font-size:1.5rem;margin-top:22px}
-
-/* footer */
+.note{font-family:var(--font-display);font-style:italic;font-size:1.3rem;line-height:1.5;max-width:32ch;margin:0 auto}
+.sign{font-family:var(--font-script);color:var(--terra-700);font-size:1.5rem;margin-top:20px}
 footer{padding:48px 0 120px;color:var(--text-mute);font-size:.88rem}
 footer .brand{font-size:1.1rem;margin-bottom:10px}
-footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
-
-/* sticky mobile cta */
+footer a{color:var(--text-mute);text-decoration:none;margin:0 6px}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:oklch(98% 0.012 80/.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:12px;align-items:center;justify-content:center}
-.sticky .btn{padding:12px 24px;font-size:.95rem}
-@media(min-width:721px){.sticky{display:none}}
-
-/* reveal */
+.sticky .btn{padding:12px 22px;font-size:.92rem}
+@media(min-width:761px){.sticky{display:none}}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
@@ -139,9 +107,9 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
 <body>
 
 <nav class="nav">
-  <div class="wrap">
+  <div class="wrap" style="max-width:var(--max)">
     <span class="brand">moni <em>goes</em> wild</span>
-    <a class="mini btn" href="#ticket" style="padding:9px 18px;font-size:.85rem">Ticket sichern →</a>
+    <a class="btn sm" href="#ticket">Ticket sichern →</a>
   </div>
 </nav>
 
@@ -150,22 +118,17 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
     <span class="fox">🦊</span>
     <p class="eyebrow">Das erste Live-Event von moni goes wild</p>
     <h1>Sparkling Destiny <em>LIVE</em></h1>
-    <p class="lead">Ein Tag. Deine Tiere. Deine Entscheidung.<br>Erlebe zum ersten Mal live, was Tierkommunikation wirklich ist — mit Ramona, der Herde und Menschen, die dieselbe Sprache sprechen.</p>
-    <div class="meta-pills">
-      <span class="pill">📅 Mittwoch, 26. August 2026</span>
-      <span class="pill">📍 Stadthalle {{ORT}}</span>
-      <span class="pill">🕙 10–17 Uhr</span>
-    </div>
+    <p class="lead">Ein Tag. Deine Tiere. Deine Entscheidung. Erlebe zum ersten Mal live, was Tierkommunikation wirklich ist — mit Ramona, der Herde und Menschen, die dieselbe Sprache sprechen.</p>
+    <div class="facts"><span>📅 Samstag, 29. August 2026</span><span>📍 Stadthalle Bitburg</span><span>🕙 ab 10 Uhr</span></div>
     <a class="btn" href="#ticket">Ich sichere mir meinen Platz</a>
-    <p class="sub-note">Begrenzte Plätze · dein Ticket wird voll auf die Ausbildung angerechnet</p>
+    <p class="sub-note">Begrenzte Plätze — nur 500 Tickets · dein Ticket wird auf die Ausbildung angerechnet</p>
   </div>
 </header>
 
 <section class="soft">
   <div class="wrap reveal">
-    <p class="script">darf ich dir was sagen?</p>
-    <br>
-    <p>Du liest hier seit Monaten mit. Du schaust die Reels, du hörst den Podcast, vielleicht warst du in einem Webinar. Und irgendwo in dir sitzt dieser Satz: <em>„Ich würde das so gern können."</em></p>
+    <p class="script">darf ich dir was sagen?</p><br>
+    <p>Du liest hier seit Monaten mit. Du schaust die Reels, vielleicht warst du in einem Webinar. Und irgendwo in dir sitzt dieser Satz: <em>„Ich würde das so gern können."</em></p>
     <p>Zwischen dir und den Tieren steht kein fehlendes Talent. Da steht ein Bildschirm.</p>
     <p><strong>Deshalb machen wir das jetzt live.</strong> Ein ganzer Tag, ein Saal voller Menschen wie du — und du erlebst am eigenen Herzen, was bisher nur andere erzählt haben.</p>
   </div>
@@ -195,18 +158,18 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
 <section>
   <div class="wrap reveal">
     <p class="eyebrow">Der Tag</p>
-    <h2>So sieht dein <em>Sparkling Day</em> aus.</h2>
-    <div class="agenda">
-      <div class="slot"><span class="t">ab 09:15</span><span class="what"><strong>Ankommen</strong> — Musik, Namensschilder, erste Gespräche mit Menschen, die deine Welt nicht erklärt haben müssen</span></div>
-      <div class="slot"><span class="t">10:00</span><span class="what"><strong>Willkommen & Opening-Story</strong> — ein Tier, ein Moment, und du bist mittendrin</span></div>
-      <div class="slot"><span class="t">10:40</span><span class="what"><strong>Verlernen statt lernen</strong> — Ramona live über das, was wirklich zwischen dir und den Tieren steht</span></div>
-      <div class="slot"><span class="t">11:30</span><span class="what"><strong>Deine erste Erfahrung</strong> — geführter Tier-Kontakt mit dem ganzen Saal</span></div>
-      <div class="slot"><span class="t">12:15</span><span class="what"><strong>Die Herde erzählt</strong> — Absolventinnen live und ehrlich auf der Bühne</span></div>
-      <div class="slot"><span class="t">12:45</span><span class="what"><strong>Mittag & Connection</strong> — in kleinen Runden, nicht anonym in der Schlange</span></div>
-      <div class="slot"><span class="t">14:00</span><span class="what"><strong>„Insel der Lebendigkeit"</strong> — die Meditation, live geführt</span></div>
-      <div class="slot peak"><span class="t">15:15</span><span class="what"><strong>Die Einladung</strong> — die neue Sparkling-Destiny-Runde öffnet, live im Saal</span></div>
-      <div class="slot"><span class="t">16:00</span><span class="what"><strong>Abschluss-Ritual</strong> — die Herde, ein Symbol, ein gemeinsames Bild. Du wirst es nicht vergessen.</span></div>
-    </div>
+    <h2>So fühlt sich dein <em>Sparkling Day</em> an.</h2>
+    <ul class="flow">
+      <li><b>Ankommen</b><span>Musik, Namensschilder, erste Gespräche mit Menschen, die deine Welt nicht erklären müssen.</span></li>
+      <li><b>Willkommen &amp; Opening-Story</b><span>Ein Tier, ein Moment, und du bist mittendrin.</span></li>
+      <li><b>Verlernen statt lernen</b><span>Ramona live über das, was wirklich zwischen dir und den Tieren steht.</span></li>
+      <li><b>Deine erste Erfahrung</b><span>Geführter Tier-Kontakt mit dem ganzen Saal.</span></li>
+      <li><b>Die Herde erzählt</b><span>Absolventinnen live und ehrlich auf der Bühne.</span></li>
+      <li><b>Mittag &amp; Connection</b><span>In kleinen Runden, nicht anonym in der Schlange.</span></li>
+      <li><b>„Insel der Lebendigkeit" — live</b><span>Die Meditation, gemeinsam geführt.</span></li>
+      <li><b>Die Einladung</b><span>Die neue Sparkling-Destiny-Runde öffnet, live im Saal.</span></li>
+      <li><b>Abschluss-Ritual</b><span>Die Herde, ein Symbol, ein gemeinsames Bild. Du wirst es nicht vergessen.</span></li>
+    </ul>
   </div>
 </section>
 
@@ -241,13 +204,13 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
     <p class="eyebrow">Dein Platz</p>
     <h2>Ein Ticket, das sich <em>selbst bezahlt.</em></h2>
     <p>Wenn du nach diesem Tag in die Ausbildung startest, wird dein Ticket <strong>vollständig angerechnet</strong>. Der Tag kostet dich dann: nichts.</p>
-    <div class="plan">
-      <span class="tag">Early-Bird · solange verfügbar</span>
+    <div class="ticket">
+      <span class="tag">Begrenzte Plätze</span>
       <div class="name">Sparkling Destiny LIVE</div>
-      <div class="amount"><span class="was">149&nbsp;€</span>97&nbsp;€</div>
-      <div class="per">Tagesticket · 26. August 2026 · Stadthalle {{ORT}}</div>
-      <div class="line2">Der komplette Tag, alle Live-Blöcke, die Meditation, das Abschluss-Ritual — und 100 % Anrechnung auf Sparkling Destiny, wenn du weitergehst.</div>
-      <a class="btn" href="{{TICKET_CHECKOUT_URL}}">Jetzt Ticket sichern</a>
+      <div class="amount">57 €</div>
+      <div class="meta">Tagesticket · 29. August 2026 · Stadthalle Bitburg</div>
+      <div class="desc">Der komplette Tag, alle Live-Blöcke, die Meditation, das Abschluss-Ritual — und 100 % Anrechnung auf Sparkling Destiny, wenn du weitergehst.</div>
+      <a class="btn" href="HIER_PRETIX_LINK">Jetzt Ticket sichern</a>
     </div>
     <div class="gift">🦊 <strong>Warum das Ticket etwas kostet:</strong> Weil dieser Tag Menschen verdient, die wirklich da sein wollen. Und weil du es zurückbekommst, wenn du deinen Weg weitergehst — als volle Anrechnung auf die Ausbildung.</div>
   </div>
@@ -255,8 +218,7 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
 
 <section>
   <div class="wrap reveal">
-    <p class="script">und von mir persönlich …</p>
-    <br>
+    <p class="script">und von mir persönlich …</p><br>
     <p class="note">„Ich stand so lange vor der Entscheidung, das hier groß zu machen. Jetzt mache ich es — aber nur einmal so wie beim ersten Mal. Sei dabei, wenn die Herde zum ersten Mal in einem Raum steht."</p>
     <div class="sign">— Ramona 🦊</div>
   </div>
@@ -270,9 +232,10 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
       <details class="qa"><summary>Muss ich schon Tierkommunikation können?</summary><p>Nein. Der Tag ist genau für den Moment davor gebaut — für alle, die es spüren wollen, bevor sie sich entscheiden. Wenn du schon in der Ausbildung bist oder sie durchhast: komm trotzdem, der Tag gehört auch der Herde.</p></details>
       <details class="qa"><summary>Muss mein Tier mitkommen?</summary><p>Nein — bitte lass dein Tier zuhause, wo es sich wohlfühlt. Tierkommunikation funktioniert nicht über Nähe, sondern über Verbindung. Genau das erlebst du an diesem Tag.</p></details>
       <details class="qa"><summary>Wird mir da etwas verkauft?</summary><p>Ehrliche Antwort: Wir eröffnen an diesem Tag die neue Runde von Sparkling Destiny — das sagen wir dir lieber vorher als hinterher. Es gibt keinen Druck und keine Tricks. Wer es spürt, geht weiter. Wer nicht, nimmt einen vollen, echten Tag mit nach Hause.</p></details>
-      <details class="qa"><summary>Was heißt „Ticket wird angerechnet"?</summary><p>Wenn du dich am Event-Tag (oder im Anschluss-Zeitraum) für die Sparkling-Destiny-Ausbildung entscheidest, ziehen wir den vollen Ticketpreis vom Ausbildungspreis ab. Dein Tag kostet dich dann effektiv nichts.</p></details>
+      <details class="qa"><summary>Was heißt „Ticket wird angerechnet"?</summary><p>Wenn du dich am Event-Tag oder im Anschluss-Zeitraum für die Sparkling-Destiny-Ausbildung entscheidest, ziehen wir den vollen Ticketpreis vom Ausbildungspreis ab. Dein Tag kostet dich dann effektiv nichts.</p></details>
+      <details class="qa"><summary>Wie komme ich hin?</summary><p>Die Stadthalle Bitburg liegt in der Eifel und ist gut erreichbar. Wenn du von weiter weg kommst: Auf der Bestellseite findest du Hinweise zu Hotels in der Umgebung. Viele aus der Herde reisen an — du bist nicht allein unterwegs.</p></details>
       <details class="qa"><summary>Was, wenn ich doch nicht kann?</summary><p>Dein Ticket ist übertragbar — schenk es jemandem, der es verdient. Details zu Umbuchung und Erstattung stehen transparent im Bestellprozess.</p></details>
-      <details class="qa"><summary>Gibt es eine Aufzeichnung?</summary><p>Nein. Dieser Tag lebt davon, dass du im Raum bist. Einzelne Momente wirst du danach im Kanal wiederfinden — aber das Erlebnis gibt es nur live.</p></details>
+      <details class="qa"><summary>Gibt es eine Aufzeichnung?</summary><p>Dieser Tag lebt davon, dass du im Raum bist. Einzelne Momente wirst du danach im Kanal wiederfinden — aber das Erlebnis gibt es nur live.</p></details>
     </div>
   </div>
 </section>
@@ -281,27 +244,27 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
   <div class="wrap reveal">
     <span class="fox">🦊</span>
     <h2>Die Herde kommt zusammen. <em>Bist du dabei?</em></h2>
-    <a class="btn" href="#ticket" style="margin-top:14px">Ich sichere mir meinen Platz</a>
-    <p class="sub-note">26. August 2026 · Stadthalle {{ORT}} · begrenzte Plätze</p>
+    <a class="btn" href="#ticket" style="margin-top:12px">Ich sichere mir meinen Platz</a>
+    <p class="sub-note">29. August 2026 · Stadthalle Bitburg · begrenzte Plätze</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <div class="brand">moni <em>goes</em> wild ♡</div>
-    <p style="max-width:44ch;margin:0 auto 14px">Aus Liebe zu Tieren — und zu dir selbst.</p>
+    <p style="max-width:44ch;margin:0 auto 12px">Aus Liebe zu Tieren — und zu dir selbst.</p>
     <div>
       <a href="https://monigoeswild.de/home">Tierkommunikation</a>·
       <a href="https://monigoeswild.de/kurse-und-ausbildung">Ausbildung</a>·
-      <a href="{{IMPRESSUM_URL}}">Impressum</a>·
-      <a href="{{DATENSCHUTZ_URL}}">Datenschutz</a>
+      <a href="https://monigoeswild.de/impressum">Impressum</a>·
+      <a href="https://monigoeswild.de/datenschutz">Datenschutz</a>
     </div>
-    <p style="margin-top:16px">© 2026 moni.goes.wild · Ramona Hoffmann</p>
+    <p style="margin-top:14px">© 2026 moni.goes.wild · Ramona Hoffmann</p>
   </div>
 </footer>
 
 <div class="sticky">
-  <span style="font-family:var(--font-display);font-size:.95rem">SD LIVE · 26.08. · ab 97&nbsp;€</span>
+  <span style="font-family:var(--font-display);font-size:.95rem">SD LIVE · 29.08. · 57 €</span>
   <a class="btn" href="#ticket">Ticket sichern</a>
 </div>
 
@@ -309,9 +272,7 @@ footer a{color:var(--text-mute);text-decoration:none;margin:0 8px}
 (function(){
   var els=document.querySelectorAll('.reveal');
   if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in')});return;}
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
-  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   els.forEach(function(e){io.observe(e)});
 })();
 </script>
